@@ -13,6 +13,6 @@ plugin.tx_rkwmaps {
     storagePid =
   }
   settings {
-    title = Titel
+    map = null
   }
 }

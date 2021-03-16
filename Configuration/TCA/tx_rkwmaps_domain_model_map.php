@@ -21,10 +21,10 @@ return [
 		'iconfile' => 'EXT:rkw_maps/Resources/Public/Icons/tx_rkwmaps_domain_model_map.gif'
 	],
 	'interface' => [
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, item',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, items',
 	],
 	'types' => [
-		'1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, item, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime, access_restricted'],
+		'1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, items, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime, access_restricted'],
 	],
 	'columns' => [
 		'sys_language_uid' => [
@@ -117,18 +117,17 @@ return [
 				'eval' => 'trim, required'
 			],
 		],
-		'item' => [
+		'items' => [
 			'exclude' => false,
 			'label' => 'LLL:EXT:rkw_maps/Resources/Private/Language/locallang_db.xlf:tx_rkwmaps_domain_model_map.item',
 			'config' => [
 				'type' => 'inline',
-				'foreign_table' => 'tx_rkwmaps_domain_model_map_item',
+				'foreign_table' => 'tx_rkwmaps_domain_model_item',
 				'foreign_field' => 'map',
-				'foreign_sortby' => 'sorting',
 				'maxitems' => 9999,
 				'minitems' => 1,
 				'appearance' => [
-					'collapseAll' => 1,
+					'collapseAll' => 0,
 					'levelLinksPosition' => 'top',
 					'showSynchronizationLink' => 1,
 					'showPossibleLocalizationRecords' => 1,

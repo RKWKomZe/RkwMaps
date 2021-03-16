@@ -7,7 +7,7 @@ CREATE TABLE tx_rkwmaps_domain_model_map (
 	pid int(11) DEFAULT '0' NOT NULL,
 
 	name varchar(255) DEFAULT '' NOT NULL,
-    item int(11) unsigned DEFAULT '0' NOT NULL,
+    items int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -28,9 +28,9 @@ CREATE TABLE tx_rkwmaps_domain_model_map (
 );
 
 #
-# Table structure for table 'tx_rkwmaps_domain_model_map_district'
+# Table structure for table 'tx_rkwmaps_domain_model_district'
 #
-CREATE TABLE tx_rkwmaps_domain_model_map_district (
+CREATE TABLE tx_rkwmaps_domain_model_district (
 
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
@@ -57,16 +57,17 @@ CREATE TABLE tx_rkwmaps_domain_model_map_district (
 );
 
 #
-# Table structure for table 'tx_rkwmaps_domain_model_map_item'
+# Table structure for table 'tx_rkwmaps_domain_model_item'
 #
-CREATE TABLE tx_rkwmaps_domain_model_map_item (
+CREATE TABLE tx_rkwmaps_domain_model_item (
 
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 
-	map int(11) unsigned DEFAULT '0',
 	district int(11) DEFAULT '0' NOT NULL,
 	content text NOT NULL,
+
+	map int(11) unsigned DEFAULT '0' NOT NULL ,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

@@ -1,36 +1,34 @@
 <?php
 return [
 	'ctrl' => [
-		'title'	=> 'LLL:EXT:rkw_maps/Resources/Private/Language/locallang_db.xlf:tx_rkwmaps_domain_model_map_item',
-		'hideTable' => 1,
-		'label' => 'question',
+		'title'	=> 'LLL:EXT:rkw_maps/Resources/Private/Language/locallang_db.xlf:tx_rkwmaps_domain_model_district',
+		'label' => 'name',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',
-		/*'languageField' => 'sys_language_uid',
+		'languageField' => 'sys_language_uid',
 		'transOrigPointerField' => 'l10n_parent',
 		'transOrigDiffSourceField' => 'l10n_diffsource',
-		*/
 		'delete' => 'deleted',
 		'enablecolumns' => [
 			'disabled' => 'hidden',
 			'starttime' => 'starttime',
 			'endtime' => 'endtime',
 		],
-		'searchFields' => 'district,content',
-		'iconfile' => 'EXT:rkw_maps/Resources/Public/Icons/tx_rkwmaps_domain_model_map_item.gif'
+        // do only make requestUpdate, if token-list should be shown on check
+       // 'requestUpdate' => 'access_restricted',
+		'searchFields' => 'name',
+		'iconfile' => 'EXT:rkw_maps/Resources/Public/Icons/tx_rkwmaps_domain_model_district.gif'
 	],
 	'interface' => [
-        'showRecordFieldList' => 'hidden, district, content, map',
-
-    ],
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, slug',
+	],
 	'types' => [
-		'1' => ['showitem' => 'hidden, district, content, map, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
-    ],
+		'1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, slug, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime, access_restricted'],
+	],
 	'columns' => [
-	    /*
 		'sys_language_uid' => [
-			'exclude' => false,
+			'exclude' => true,
 			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
 			'config' => [
 				'type' => 'select',
@@ -48,7 +46,7 @@ return [
 		],
 		'l10n_parent' => [
 			'displayCond' => 'FIELD:sys_language_uid:>:0',
-			'exclude' => false,
+			'exclude' => true,
 			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.l18n_parent',
 			'config' => [
 				'type' => 'select',
@@ -56,8 +54,8 @@ return [
 				'items' => [
 					['', 0],
 				],
-				'foreign_table' => 'tx_rkwmaps_domain_model_map_item',
-				'foreign_table_where' => 'AND tx_rkwmaps_domain_model_map_item.pid=###CURRENT_PID### AND tx_rkwmaps_domain_model_map_item.sys_language_uid IN (-1,0)',
+				'foreign_table' => 'tx_rkwmaps_domain_model_district',
+				'foreign_table_where' => 'AND tx_rkwmaps_domain_model_district.pid=###CURRENT_PID### AND tx_rkwmaps_domain_model_district.sys_language_uid IN (-1,0)',
 			],
 		],
 		'l10n_diffsource' => [
@@ -65,7 +63,6 @@ return [
 				'type' => 'passthrough',
 			],
 		],
-	    */
 		'hidden' => [
 			'exclude' => false,
 			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
@@ -111,34 +108,23 @@ return [
                 ]
 			],
 		],
-		'district' => [
+		'name' => [
 			'exclude' => false,
-			'label' => 'LLL:EXT:rkw_maps/Resources/Private/Language/locallang_db.xlf:tx_rkwmaps_domain_model_map_item.type',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'foreign_table' => 'tx_rkwmaps_domain_model_map_district',
-                'foreign_table_where' => 'ORDER BY tx_rkwmaps_domain_model_map_district.name',
-                'maxitems'      => 1,
-                'minitems'      => 1,
-                'size'          => 5,
-            ],
-		],
-        'content' => [
-            'exclude' => false,
-            'label' => 'LLL:EXT:rkw_maps/Resources/Private/Language/locallang_db.xlf:tx_rkwmaps_domain_model_map_item.content',
-            'config' => [
-                'type' => 'text',
-                'cols' => 40,
-                'rows' => 15,
-                'eval' => 'trim, required',
-                'enableRichtext' => true,
-            ],
-        ],
-		'map' => [
+			'label' => 'LLL:EXT:rkw_maps/Resources/Private/Language/locallang_db.xlf:tx_rkwmaps_domain_model_district.name',
 			'config' => [
-				'type' => 'passthrough',
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim, required'
 			],
 		],
+        'slug' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:rkw_maps/Resources/Private/Language/locallang_db.xlf:tx_rkwmaps_domain_model_district.slug',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim, required'
+            ],
+        ],
 	],
 ];

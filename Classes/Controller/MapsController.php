@@ -5,6 +5,7 @@ namespace RKW\RkwMaps\Controller;
 use RKW\RkwMaps\Domain\Model\Map;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /***
  *
@@ -31,6 +32,14 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     protected $pageRenderer;
 
     /**
+     * mapRepository
+     *
+     * @var \RKW\RkwMaps\Domain\Repository\MapRepository
+     * @inject
+     */
+    protected $mapRepository;
+
+    /**
      * @var \RKW\RkwMaps\Domain\Model\Map
      */
     protected $map;
@@ -43,15 +52,27 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     /**
      * action show
      *
+     * @param \RKW\RkwMaps\Domain\Model\Map $map
      * @return void
      */
-    public function showAction()
+    public function showAction(\RKW\RkwMaps\Domain\Model\Map $map = null)
     {
         $this->initializeAction();
 
+        if (!$map) {
+            $map = $this->mapRepository->findByUid($this->settings['map']);
+        }
+
+
+
+//        $this->view->assignMultiple([
+//            'calculation'      => $calculation,
+//            'assignedPrograms' => $calculation->getCalculator()->getAssignedPrograms()->toArray(),
+//        ]);
+
         $this->pageRenderer = GeneralUtility::makeInstance( PageRenderer::class );
 
-        $this->map = new Map($this->settings, $this->contentUid);
+//        $this->map = new Map($this->settings, $this->contentUid);
 
         // Inject necessary js libs
         $this->pageRenderer->addJsFooterLibrary(
@@ -87,7 +108,7 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             let popperInstance_' . $this->contentUid . '
         
             // 2019 Belgian population by province
-            const data_' . $this->contentUid . ' = ' . $this->map->getData() . '
+            const data_' . $this->contentUid . ' = ' . $map->process() . '
             
             fetch(\'http://rkw-kompetenzzentrum.rkw.local/typo3conf/ext/rkw_maps/Resources/Public/Svg/germany-district-map-creative-commons-wiki.svg\')
                 .then(response => response.text())
@@ -114,25 +135,9 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                             }
             
                             if (typeof regionValue !== \'undefined\') {
-            
-                                let companiesList = \'\';
-            
-                                regionValue.companies.forEach(function(company) {
-                                    let string = \'\';
-                                    string = `<p>${company.name}<br>`
-                                        + `${company.employees} Angestellte<br>`
-                                        + `<a href="${company.url}" target="_blank">${company.url}</a>`
-                                        + `</p>`
-        
-                                    companiesList = companiesList + string
-                                });
-        
-                                popperEl_' . $this->contentUid . '.innerHTML = `<strong>${region.attr(\'name\')}</strong><br>` + companiesList
-            
+                                popperEl_' . $this->contentUid . '.innerHTML = `<strong>${region.attr(\'name\')}</strong><br>` + regionValue.content
                             } else {
-        
                                 popperEl_' . $this->contentUid . '.innerHTML = `<strong>${region.attr(\'name\')}</strong>`
-        
                             }
         
                             popperEl_' . $this->contentUid . '.style.visibility = \'visible\'

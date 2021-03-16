@@ -6,12 +6,12 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /***
  *
- * This file is part of the "RKW FeeCalculator" Extension for TYPO3 CMS.
+ * This file is part of the "RKW Maps" Extension for TYPO3 CMS.
  *
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
- *  (c) 2019 Christian Dilger <c.dilger@addorange.de>
+ *  (c) 2021 Christian Dilger <c.dilger@addorange.de>
  *
  ***/
 
@@ -20,34 +20,77 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
  */
 class Map extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
-
-    protected $contentUid;
-
-    protected $settings;
-
-    protected $chartType;
-
     /**
-     * @var array
-     */
-    protected $generalOptions;
-
-    /**
-     * Map constructor.
+     * items
      *
-     * @param $settings
-     * @param $contentUid
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwMaps\Domain\Model\Item>
      */
-    public function __construct($settings, $contentUid)
-    {
-        $this->settings = $settings;
-        $this->contentUid = $contentUid;
+    protected $items;
 
-        $this->generalOptions = $this->setGeneralOptions();
+    /**
+     * __construct
+     */
+    public function __construct()
+    {
+        //Do not remove the next line: It would break the functionality
+        $this->initStorageObjects();
+    }
+
+    /**
+     * Initializes all ObjectStorage properties
+     * Do not modify this method!
+     * It will be rewritten on each save in the extension builder
+     * You may modify the constructor of this class instead
+     *
+     * @return void
+     */
+    protected function initStorageObjects()
+    {
+        $this->items = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    }
+
+    /**
+     * Returns the items
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwMaps\Domain\Model\Item> $items
+     */
+    public function getItems()
+    {
+        return $this->items;
+    }
+
+    /**
+     * Sets the items
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwMaps\Domain\Model\Item> $items
+     * @return void
+     */
+    public function setItems(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $items)
+    {
+        $this->items = $items;
+    }
+
+    public function process()
+    {
+        $items = [];
+
+        foreach ($this->getItems() as $item) {
+
+            $district = $item->getDistrict()->current();
+
+            $items[$district->getSlug()] = [
+                'name' => $district->getName(),
+                'content' => $item->getContent()
+            ];
+
+        }
+
+        return json_encode($items);
     }
 
     public function getData()
     {
+        //  get item data
         //  @todo: pre-render html in here
 
         //
@@ -58,39 +101,7 @@ class Map extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 //
 //        exit();
 
-        return $this->settings['data'];
+        //  return $this->settings['data'];
     }
 
-    /**
-     * @return mixed
-     */
-    public function getChartType()
-    {
-        return $this->chartType;
-    }
-
-    /**
-     * @return array
-     */
-    public function setGeneralOptions()
-    {
-        $scriptType = 'text/javascript';
-
-        $title = $this->settings['title'];
-
-        return compact(
-            'scriptType',
-            'title'
-        );
-    }
-
-    /**
-     * @return array
-     */
-    public function process()
-    {
-        return array_merge($this->generalOptions, [
-            'contentUid' => $this->contentUid
-        ]);
-    }
 }

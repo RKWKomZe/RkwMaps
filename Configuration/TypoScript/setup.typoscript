@@ -19,15 +19,9 @@ plugin.tx_rkwmaps {
     #callDefaultActionIfActionCantBeResolved = 1
   }
   settings {
-    title = {$plugin.tx_rkwmaps.settings.title}
-    data = {$plugin.tx_rkwmaps.settings.data}
+    map = {$plugin.tx_rkwmaps.settings.map}
   }
 }
-
-
-// include JS
-# page.includeJSFooterlibs.txRkwMapsApexCharts = EXT:rkw_maps/Resources/Public/Js/ApexCharts-v3.6.2.js
-# page.includeCSS.txRkwMapsCharts = EXT:rkw_maps/Resources/Public/Css/Charts.css
 
 
 plugin.tx_rkwmaps._CSS_DEFAULT_STYLE (

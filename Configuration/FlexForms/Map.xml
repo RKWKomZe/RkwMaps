@@ -7,25 +7,29 @@
 				</TCEforms>
 				<type>array</type>
 				<el>
-                    <settings.title>
+                    <settings.map>
                         <TCEforms>
-                            <label>LLL:EXT:rkw_maps/Resources/Private/Language/locallang_db.xlf:flexform.map.title</label>
+                            <label>
+                                LLL:EXT:rkw_maps/Resources/Private/Language/locallang_be.xlf:tx_rkwmaps_domain_model_map.name
+                            </label>
                             <config>
-                                <type>input</type>
-                                <size>20</size>
-                                <eval>trim</eval>
+                                <type>select</type>
+                                <items>
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0">Bitte wählen</numIndex>
+                                        <numIndex index="1"></numIndex>
+                                    </numIndex>
+                                </items>
+                                <foreign_table>tx_rkwmaps_domain_model_map</foreign_table>
+                                <foreign_table_where>
+                                    AND tx_rkwmaps_domain_model_map.deleted = 0 AND tx_rkwmaps_domain_model_map.hidden = 0
+                                </foreign_table_where>
+                                <size>1</size>
+                                <min>1</min>
+                                <max>1</max>
                             </config>
                         </TCEforms>
-                    </settings.title>
-                    <settings.data>
-                        <TCEforms>
-                            <label>LLL:EXT:rkw_maps/Resources/Private/Language/locallang_db.xlf:flexform.map.data</label>
-                            <config>
-                                <type>text</type>
-                                <eval>trim</eval>
-                            </config>
-                        </TCEforms>
-                    </settings.data>
+                    </settings.map>
 				</el>
 			</ROOT>
 		</sDEF>
