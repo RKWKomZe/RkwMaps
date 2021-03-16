@@ -1,7 +1,7 @@
 #
-# Table structure for table 'tx_rkwmap_domain_model_map'
+# Table structure for table 'tx_rkwmaps_domain_model_map'
 #
-CREATE TABLE tx_rkwmap_domain_model_map (
+CREATE TABLE tx_rkwmaps_domain_model_map (
 
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
@@ -28,9 +28,9 @@ CREATE TABLE tx_rkwmap_domain_model_map (
 );
 
 #
-# Table structure for table 'tx_rkwmap_domain_model_map_district'
+# Table structure for table 'tx_rkwmaps_domain_model_map_district'
 #
-CREATE TABLE tx_rkwmap_domain_model_map_district (
+CREATE TABLE tx_rkwmaps_domain_model_map_district (
 
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
@@ -57,9 +57,9 @@ CREATE TABLE tx_rkwmap_domain_model_map_district (
 );
 
 #
-# Table structure for table 'tx_rkwmap_domain_model_map_item'
+# Table structure for table 'tx_rkwmaps_domain_model_map_item'
 #
-CREATE TABLE tx_rkwmap_domain_model_map_item (
+CREATE TABLE tx_rkwmaps_domain_model_map_item (
 
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
@@ -75,6 +75,7 @@ CREATE TABLE tx_rkwmap_domain_model_map_item (
 	hidden tinyint(4) unsigned DEFAULT '0' NOT NULL,
 	starttime int(11) unsigned DEFAULT '0' NOT NULL,
 	endtime int(11) unsigned DEFAULT '0' NOT NULL,
+	sorting int(11) unsigned DEFAULT '0' NOT NULL,
 
 	sys_language_uid int(11) DEFAULT '0' NOT NULL,
 	l10n_parent int(11) DEFAULT '0' NOT NULL,

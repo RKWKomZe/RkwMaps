@@ -1,15 +1,15 @@
 
-plugin.tx_rkwmap {
+plugin.tx_rkwmaps {
   view {
     templateRootPaths.0 = EXT:rkw_maps/Resources/Private/Templates/
-    templateRootPaths.1 = {$plugin.tx_rkwmap.view.templateRootPath}
+    templateRootPaths.1 = {$plugin.tx_rkwmaps.view.templateRootPath}
     partialRootPaths.0 = EXT:rkw_maps/Resources/Private/Partials/
-    partialRootPaths.1 = {$plugin.tx_rkwmap.view.partialRootPath}
+    partialRootPaths.1 = {$plugin.tx_rkwmaps.view.partialRootPath}
     layoutRootPaths.0 = EXT:rkw_maps/Resources/Private/Layouts/
-    layoutRootPaths.1 = {$plugin.tx_rkwmap.view.layoutRootPath}
+    layoutRootPaths.1 = {$plugin.tx_rkwmaps.view.layoutRootPath}
   }
   persistence {
-    storagePid = {$plugin.tx_rkwmap.persistence.storagePid}
+    storagePid = {$plugin.tx_rkwmaps.persistence.storagePid}
     #recursive = 1
   }
   features {
@@ -19,8 +19,8 @@ plugin.tx_rkwmap {
     #callDefaultActionIfActionCantBeResolved = 1
   }
   settings {
-    title = {$plugin.tx_rkwmap.settings.title}
-    data = {$plugin.tx_rkwmap.settings.data}
+    title = {$plugin.tx_rkwmaps.settings.title}
+    data = {$plugin.tx_rkwmaps.settings.data}
   }
 }
 
@@ -30,6 +30,6 @@ plugin.tx_rkwmap {
 # page.includeCSS.txRkwMapsCharts = EXT:rkw_maps/Resources/Public/Css/Charts.css
 
 
-plugin.tx_rkwmap._CSS_DEFAULT_STYLE (
+plugin.tx_rkwmaps._CSS_DEFAULT_STYLE (
 
 )

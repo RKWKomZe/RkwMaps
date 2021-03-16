@@ -8,7 +8,7 @@ call_user_func(
         // Add Tables
         //=================================================================
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages(
-            'tx_rkwmap_domain_model_map'
+            'tx_rkwmaps_domain_model_map'
         );
 
     },

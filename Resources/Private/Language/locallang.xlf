@@ -3,10 +3,10 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2019-02-08T15:53:32Z" product-name="rkw_maps">
 		<header/>
 		<body>
-			<trans-unit id="tx_rkwmap_domain_model_graphics">
+			<trans-unit id="tx_rkwmaps_domain_model_graphics">
 				<source>Mapics</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwmap_domain_model_graphics.description">
+			<trans-unit id="tx_rkwmaps_domain_model_graphics.description">
 				<source>Description</source>
 			</trans-unit>
 		</body>

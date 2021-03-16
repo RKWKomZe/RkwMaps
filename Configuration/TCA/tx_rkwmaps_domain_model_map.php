@@ -1,7 +1,7 @@
 <?php
 return [
 	'ctrl' => [
-		'title'	=> 'LLL:EXT:rkw_maps/Resources/Private/Language/locallang_db.xlf:tx_rkwmap_domain_model_map',
+		'title'	=> 'LLL:EXT:rkw_maps/Resources/Private/Language/locallang_db.xlf:tx_rkwmaps_domain_model_map',
 		'label' => 'name',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
@@ -18,7 +18,7 @@ return [
         // do only make requestUpdate, if token-list should be shown on check
        // 'requestUpdate' => 'access_restricted',
 		'searchFields' => 'name',
-		'iconfile' => 'EXT:rkw_maps/Resources/Public/Icons/tx_rkwmap_domain_model_map.gif'
+		'iconfile' => 'EXT:rkw_maps/Resources/Public/Icons/tx_rkwmaps_domain_model_map.gif'
 	],
 	'interface' => [
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, item',
@@ -54,8 +54,8 @@ return [
 				'items' => [
 					['', 0],
 				],
-				'foreign_table' => 'tx_rkwmap_domain_model_map',
-				'foreign_table_where' => 'AND tx_rkwmap_domain_model_map.pid=###CURRENT_PID### AND tx_rkwmap_domain_model_map.sys_language_uid IN (-1,0)',
+				'foreign_table' => 'tx_rkwmaps_domain_model_map',
+				'foreign_table_where' => 'AND tx_rkwmaps_domain_model_map.pid=###CURRENT_PID### AND tx_rkwmaps_domain_model_map.sys_language_uid IN (-1,0)',
 			],
 		],
 		'l10n_diffsource' => [
@@ -110,7 +110,7 @@ return [
 		],
 		'name' => [
 			'exclude' => false,
-			'label' => 'LLL:EXT:rkw_maps/Resources/Private/Language/locallang_db.xlf:tx_rkwmap_domain_model_map.name',
+			'label' => 'LLL:EXT:rkw_maps/Resources/Private/Language/locallang_db.xlf:tx_rkwmaps_domain_model_map.name',
 			'config' => [
 				'type' => 'input',
 				'size' => 30,
@@ -119,10 +119,10 @@ return [
 		],
 		'item' => [
 			'exclude' => false,
-			'label' => 'LLL:EXT:rkw_maps/Resources/Private/Language/locallang_db.xlf:tx_rkwmap_domain_model_map.item',
+			'label' => 'LLL:EXT:rkw_maps/Resources/Private/Language/locallang_db.xlf:tx_rkwmaps_domain_model_map.item',
 			'config' => [
 				'type' => 'inline',
-				'foreign_table' => 'tx_rkwmap_domain_model_item',
+				'foreign_table' => 'tx_rkwmaps_domain_model_map_item',
 				'foreign_field' => 'map',
 				'foreign_sortby' => 'sorting',
 				'maxitems' => 9999,
