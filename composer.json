@@ -1,0 +1,39 @@
+{
+    "name": "rkw/rkw-maps",
+    "type": "typo3-cms-extension",
+    "description": "Extension for displaying maps",
+    "homepage": "https://www.rkw-kompetenzzentrum.de",
+    "license": ["GPL-2.0+"],
+    "keywords": ["TYPO3 CMS", "RKW", "Map"],
+    "support": {
+        "email": "developer@steffenkroggel.de"
+    },
+    "authors": [
+        {
+            "name": "Christian Dilger",
+            "email": "c.dilger@addorange.de",
+            "homepage": "http://addorange.de",
+            "role": "Developer"
+        },
+        {
+            "name": "Steffen Kroggel",
+            "email": "developer@steffenkroggel.de",
+            "homepage": "http://www.steffenkroggel.de",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.6",
+        "typo3/cms-core": "~7.6.0 || ~8.7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "RKW\\RkwMaps\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "rkw_maps"
+        }
+    }
+}

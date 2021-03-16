@@ -1,0 +1,35 @@
+
+plugin.tx_rkwmap {
+  view {
+    templateRootPaths.0 = EXT:rkw_maps/Resources/Private/Templates/
+    templateRootPaths.1 = {$plugin.tx_rkwmap.view.templateRootPath}
+    partialRootPaths.0 = EXT:rkw_maps/Resources/Private/Partials/
+    partialRootPaths.1 = {$plugin.tx_rkwmap.view.partialRootPath}
+    layoutRootPaths.0 = EXT:rkw_maps/Resources/Private/Layouts/
+    layoutRootPaths.1 = {$plugin.tx_rkwmap.view.layoutRootPath}
+  }
+  persistence {
+    storagePid = {$plugin.tx_rkwmap.persistence.storagePid}
+    #recursive = 1
+  }
+  features {
+    #skipDefaultArguments = 1
+  }
+  mvc {
+    #callDefaultActionIfActionCantBeResolved = 1
+  }
+  settings {
+    title = {$plugin.tx_rkwmap.settings.title}
+    data = {$plugin.tx_rkwmap.settings.data}
+  }
+}
+
+
+// include JS
+# page.includeJSFooterlibs.txRkwMapsApexCharts = EXT:rkw_maps/Resources/Public/Js/ApexCharts-v3.6.2.js
+# page.includeCSS.txRkwMapsCharts = EXT:rkw_maps/Resources/Public/Css/Charts.css
+
+
+plugin.tx_rkwmap._CSS_DEFAULT_STYLE (
+
+)

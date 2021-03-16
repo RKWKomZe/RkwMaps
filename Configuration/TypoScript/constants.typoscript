@@ -1,0 +1,18 @@
+
+plugin.tx_rkwmap {
+  view {
+    # cat=plugin.tx_rkwmap/file; type=string; label=Path to template root (FE)
+    templateRootPath = EXT:rkw_maps/Resources/Private/Templates/
+    # cat=plugin.tx_rkwmap/file; type=string; label=Path to template partials (FE)
+    partialRootPath = EXT:rkw_maps/Resources/Private/Partials/
+    # cat=plugin.tx_rkwmap/file; type=string; label=Path to template layouts (FE)
+    layoutRootPath = EXT:rkw_maps/Resources/Private/Layouts/
+  }
+  persistence {
+    # cat=plugin.tx_rkwmap//a; type=string; label=Default storage PID
+    storagePid =
+  }
+  settings {
+    title = Titel
+  }
+}
