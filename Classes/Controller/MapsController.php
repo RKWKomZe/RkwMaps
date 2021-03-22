@@ -45,7 +45,7 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     protected $map;
 
     /**
-     * @var
+     * @var integer
      */
     protected $contentUid;
 
@@ -63,16 +63,7 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $map = $this->mapRepository->findByUid($this->settings['map']);
         }
 
-
-
-//        $this->view->assignMultiple([
-//            'calculation'      => $calculation,
-//            'assignedPrograms' => $calculation->getCalculator()->getAssignedPrograms()->toArray(),
-//        ]);
-
         $this->pageRenderer = GeneralUtility::makeInstance( PageRenderer::class );
-
-//        $this->map = new Map($this->settings, $this->contentUid);
 
         // Inject necessary js libs
         $this->pageRenderer->addJsFooterLibrary(
@@ -107,8 +98,7 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             const popperEl_' . $this->contentUid . ' = document.getElementById(\'popper\')
             let popperInstance_' . $this->contentUid . '
         
-            // 2019 Belgian population by province
-            const data_' . $this->contentUid . ' = ' . $map->process() . '
+            const data_' . $this->contentUid . ' = ' . $map->getData() . '
             
             fetch(\'http://rkw-kompetenzzentrum.rkw.local/typo3conf/ext/rkw_maps/Resources/Public/Svg/germany-district-map-creative-commons-wiki.svg\')
                 .then(response => response.text())
@@ -128,12 +118,14 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                         const associatedRegions = draw_' . $this->contentUid . '.find(\'.\' + regionClass);
                         const regionValue = data_' . $this->contentUid . '[regionClass]
         
-                        region.on(\'mouseover\', () => {
-        
-                            for (const associatedRegion of associatedRegions) {
+                        for (const associatedRegion of associatedRegions) {
+                            if (typeof regionValue !== \'undefined\') {
                                 associatedRegion.addClass(\'primary\')
                             }
-            
+                        }
+                        
+                        region.on(\'mouseover\', () => {
+        
                             if (typeof regionValue !== \'undefined\') {
                                 popperEl_' . $this->contentUid . '.innerHTML = `<strong>${region.attr(\'name\')}</strong><br>` + regionValue.content
                             } else {
@@ -171,17 +163,12 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         // Inject map css
         $mapCss = '
 		        #map_' . $this->contentUid . ' {
-		            border: 10px solid blue;
 				}
 			';
 
         $this->pageRenderer->addCssInlineBlock( 'mapCss_' . $this->contentUid, $mapCss, true );
 
         $this->view->assign( 'cUid', $this->contentUid );
-
-//            $this->view->assignMultiple($this->graph->process());
-
-//        $this->addRenderCallToFooter();
 
     }
 
@@ -199,22 +186,6 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     protected function getContentUid()
     {
         $this->contentUid = (int)$this->configurationManager->getContentObject()->data['uid'];
-    }
-
-    /**
-     * @return void
-     */
-    protected function addRenderCallToFooter()
-    {
-        $txRkwMapsElement = 'txRkwMapsElement' . $this->contentUid;
-
-        $GLOBALS['TSFE']->additionalFooterData[$txRkwMapsElement] = '
-            <script type="text/javascript">
-
-            </script>
-
-        ';
-
     }
 
 }

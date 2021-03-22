@@ -2,8 +2,6 @@
 
 namespace RKW\RkwMaps\Domain\Model;
 
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-
 /***
  *
  * This file is part of the "RKW Maps" Extension for TYPO3 CMS.
@@ -70,7 +68,7 @@ class Map extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->items = $items;
     }
 
-    public function process()
+    public function getData()
     {
         $items = [];
 
@@ -86,22 +84,6 @@ class Map extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         }
 
         return json_encode($items);
-    }
-
-    public function getData()
-    {
-        //  get item data
-        //  @todo: pre-render html in here
-
-        //
-//        $data = json_decode($this->settings['data'], true);
-//
-//
-//        $renderedData = array_map()
-//
-//        exit();
-
-        //  return $this->settings['data'];
     }
 
 }
