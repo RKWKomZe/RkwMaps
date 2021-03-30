@@ -110,7 +110,11 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                     const draw_' . $this->contentUid . ' = SVG(image.slice(startOfSvg_' . $this->contentUid . '))
                         .addTo(\'#map_' . $this->contentUid . '\')
                         .size(\'100%\', 1000)
-                        .panZoom()
+                        .panZoom({
+                            zoomMin: 0.5,
+                            zoomMax: 10, 
+                            zoomFactor: 0.00000001
+                        })
         
                     for (const region of draw_' . $this->contentUid . '.find(\'#districts .district\')) {
         
@@ -139,10 +143,6 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         
                         region.on(\'mouseleave\', () => {
         
-                            for (const associatedRegion of associatedRegions) {
-                                associatedRegion.removeClass(\'primary\')
-                            }
-            
                             popperEl_' . $this->contentUid . '.style.visibility = \'hidden\'
                             
                         })
