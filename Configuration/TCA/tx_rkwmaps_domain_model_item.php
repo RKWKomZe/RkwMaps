@@ -3,7 +3,7 @@ return [
 	'ctrl' => [
 		'title'	=> 'LLL:EXT:rkw_maps/Resources/Private/Language/locallang_db.xlf:tx_rkwmaps_domain_model_item',
 		'hideTable' => 1,
-		'label' => 'question',
+		'label' => 'district',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',

@@ -2,24 +2,29 @@
 
 namespace RKW\RkwMaps\Controller;
 
-use RKW\RkwMaps\Domain\Model\Map;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
-/***
+/*
+ * This file is part of the TYPO3 CMS project.
  *
- * This file is part of the "RKW Maps" Extension for TYPO3 CMS.
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
- *  (c) 2021 Christian Dilger <c.dilger@addorange.de>
- *
- ***/
+ * The TYPO3 project - inspiring people to share!
+ */
 
 /**
  * MapsController
+ *
+ * @author Christian Dilger <c.dilger@addorange.de>
+ * @copyright Rkw Kompetenzzentrum
+ * @package RKW_RkwMaps
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
@@ -40,12 +45,7 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     protected $mapRepository;
 
     /**
-     * @var \RKW\RkwMaps\Domain\Model\Map
-     */
-    protected $map;
-
-    /**
-     * @var
+     * @var integer
      */
     protected $contentUid;
 
@@ -63,16 +63,7 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $map = $this->mapRepository->findByUid($this->settings['map']);
         }
 
-
-
-//        $this->view->assignMultiple([
-//            'calculation'      => $calculation,
-//            'assignedPrograms' => $calculation->getCalculator()->getAssignedPrograms()->toArray(),
-//        ]);
-
         $this->pageRenderer = GeneralUtility::makeInstance( PageRenderer::class );
-
-//        $this->map = new Map($this->settings, $this->contentUid);
 
         // Inject necessary js libs
         $this->pageRenderer->addJsFooterLibrary(
@@ -107,8 +98,7 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             const popperEl_' . $this->contentUid . ' = document.getElementById(\'popper\')
             let popperInstance_' . $this->contentUid . '
         
-            // 2019 Belgian population by province
-            const data_' . $this->contentUid . ' = ' . $map->process() . '
+            const data_' . $this->contentUid . ' = ' . $map->getData() . '
             
             fetch(\'http://rkw-kompetenzzentrum.rkw.local/typo3conf/ext/rkw_maps/Resources/Public/Svg/germany-district-map-creative-commons-wiki.svg\')
                 .then(response => response.text())
@@ -120,7 +110,11 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                     const draw_' . $this->contentUid . ' = SVG(image.slice(startOfSvg_' . $this->contentUid . '))
                         .addTo(\'#map_' . $this->contentUid . '\')
                         .size(\'100%\', 1000)
-                        .panZoom()
+                        .panZoom({
+                            zoomMin: 0.5,
+                            zoomMax: 10, 
+                            zoomFactor: 0.00000001
+                        })
         
                     for (const region of draw_' . $this->contentUid . '.find(\'#districts .district\')) {
         
@@ -128,12 +122,14 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                         const associatedRegions = draw_' . $this->contentUid . '.find(\'.\' + regionClass);
                         const regionValue = data_' . $this->contentUid . '[regionClass]
         
-                        region.on(\'mouseover\', () => {
-        
-                            for (const associatedRegion of associatedRegions) {
+                        for (const associatedRegion of associatedRegions) {
+                            if (typeof regionValue !== \'undefined\') {
                                 associatedRegion.addClass(\'primary\')
                             }
-            
+                        }
+                        
+                        region.on(\'mouseover\', () => {
+        
                             if (typeof regionValue !== \'undefined\') {
                                 popperEl_' . $this->contentUid . '.innerHTML = `<strong>${region.attr(\'name\')}</strong><br>` + regionValue.content
                             } else {
@@ -147,10 +143,6 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         
                         region.on(\'mouseleave\', () => {
         
-                            for (const associatedRegion of associatedRegions) {
-                                associatedRegion.removeClass(\'primary\')
-                            }
-            
                             popperEl_' . $this->contentUid . '.style.visibility = \'hidden\'
                             
                         })
@@ -171,17 +163,12 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         // Inject map css
         $mapCss = '
 		        #map_' . $this->contentUid . ' {
-		            border: 10px solid blue;
 				}
 			';
 
         $this->pageRenderer->addCssInlineBlock( 'mapCss_' . $this->contentUid, $mapCss, true );
 
         $this->view->assign( 'cUid', $this->contentUid );
-
-//            $this->view->assignMultiple($this->graph->process());
-
-//        $this->addRenderCallToFooter();
 
     }
 
@@ -199,22 +186,6 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     protected function getContentUid()
     {
         $this->contentUid = (int)$this->configurationManager->getContentObject()->data['uid'];
-    }
-
-    /**
-     * @return void
-     */
-    protected function addRenderCallToFooter()
-    {
-        $txRkwMapsElement = 'txRkwMapsElement' . $this->contentUid;
-
-        $GLOBALS['TSFE']->additionalFooterData[$txRkwMapsElement] = '
-            <script type="text/javascript">
-
-            </script>
-
-        ';
-
     }
 
 }

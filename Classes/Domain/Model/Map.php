@@ -2,21 +2,26 @@
 
 namespace RKW\RkwMaps\Domain\Model;
 
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-
-/***
+/*
+ * This file is part of the TYPO3 CMS project.
  *
- * This file is part of the "RKW Maps" Extension for TYPO3 CMS.
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
- *  (c) 2021 Christian Dilger <c.dilger@addorange.de>
- *
- ***/
+ * The TYPO3 project - inspiring people to share!
+ */
 
 /**
  * Map
+ *
+ * @author Christian Dilger <c.dilger@addorange.de>
+ * @copyright Rkw Kompetenzzentrum
+ * @package RKW_RkwMaps
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class Map extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
@@ -70,7 +75,7 @@ class Map extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->items = $items;
     }
 
-    public function process()
+    public function getData()
     {
         $items = [];
 
@@ -86,22 +91,6 @@ class Map extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         }
 
         return json_encode($items);
-    }
-
-    public function getData()
-    {
-        //  get item data
-        //  @todo: pre-render html in here
-
-        //
-//        $data = json_decode($this->settings['data'], true);
-//
-//
-//        $renderedData = array_map()
-//
-//        exit();
-
-        //  return $this->settings['data'];
     }
 
 }
