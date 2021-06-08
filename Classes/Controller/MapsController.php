@@ -121,7 +121,7 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                         const regionClass = region.classes()[1]
                         const associatedRegions = draw_' . $this->contentUid . '.find(\'.\' + regionClass);
                         const regionValue = data_' . $this->contentUid . '[regionClass]
-        
+
                         for (const associatedRegion of associatedRegions) {
                             if (typeof regionValue !== \'undefined\') {
                                 associatedRegion.addClass(\'primary\')
@@ -129,11 +129,17 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                         }
                         
                         region.on(\'mouseover\', () => {
-        
+                        
                             if (typeof regionValue !== \'undefined\') {
                                 popperEl_' . $this->contentUid . '.innerHTML = `<strong>${region.attr(\'name\')}</strong><br>` + regionValue.content
                             } else {
                                 popperEl_' . $this->contentUid . '.innerHTML = `<strong>${region.attr(\'name\')}</strong>`
+                            }
+                            
+                            for (const associatedRegion of associatedRegions) {
+                                if (associatedRegion != region) {
+                                    associatedRegion.addClass(\'primary\')
+                                }
                             }
         
                             popperEl_' . $this->contentUid . '.style.visibility = \'visible\'
@@ -144,7 +150,13 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                         region.on(\'mouseleave\', () => {
         
                             popperEl_' . $this->contentUid . '.style.visibility = \'hidden\'
-                            
+       
+                            for (const associatedRegion of associatedRegions) {
+                                if (associatedRegion != region) {
+                                    associatedRegion.removeClass(\'primary\')
+                                }
+                            }
+                     
                         })
                         
                     }
