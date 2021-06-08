@@ -100,7 +100,7 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         
             const data_' . $this->contentUid . ' = ' . $map->getData() . '
             
-            fetch(\'http://rkw-kompetenzzentrum.rkw.local/typo3conf/ext/rkw_maps/Resources/Public/Svg/germany-district-map-creative-commons-wiki.svg\')
+            fetch(\'/typo3conf/ext/rkw_maps/Resources/Public/Svg/germany-district-map-creative-commons-wiki.svg\')
                 .then(response => response.text())
                 .then((image) => {
                 

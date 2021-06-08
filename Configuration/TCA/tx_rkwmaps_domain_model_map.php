@@ -119,11 +119,14 @@ return [
 		],
 		'items' => [
 			'exclude' => false,
-			'label' => 'LLL:EXT:rkw_maps/Resources/Private/Language/locallang_db.xlf:tx_rkwmaps_domain_model_map.item',
+			'label' => 'LLL:EXT:rkw_maps/Resources/Private/Language/locallang_db.xlf:tx_rkwmaps_domain_model_item.items',
 			'config' => [
 				'type' => 'inline',
 				'foreign_table' => 'tx_rkwmaps_domain_model_item',
 				'foreign_field' => 'map',
+                'label' => 'foreign_table',
+                'label_alt' => 'foreign_field, name',
+                'label_alt_force' => 1,
 				'maxitems' => 9999,
 				'minitems' => 1,
 				'appearance' => [
