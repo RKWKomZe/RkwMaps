@@ -4,91 +4,38 @@
 		<header/>
 		<body>
 
-		    <!-- tx_rkw_graphics_domain_model_graphics -->
-
-			<trans-unit id="tx_rkw_graphics_domain_model_graphics">
-				<source>Mapics</source>
-			</trans-unit>
-			<trans-unit id="tx_rkw_graphics_domain_model_graphics.description">
-				<source>Description</source>
+            <!-- tx_rkwmaps_domain_model_map -->
+            <trans-unit id="tx_rkwmaps_domain_model_map">
+				<source>RKW Map</source>
+				<target>RKW Karte</target>
 			</trans-unit>
 
-			<!-- Flexform -->
-            <trans-unit id="flexform.map.sheetTitle">
-                <source>Map</source>
-            </trans-unit>
-            <trans-unit id="flexform.map.selectType">
-                <source>Select type</source>
-                <target>Bitte Diagrammtyp wählen</target>
-            </trans-unit>
-            <trans-unit id="flexform.map.title">
-                <source>Title</source>
-                <target>Titel</target>
-            </trans-unit>
-            <trans-unit id="flexform.map.xaxis.label">
-                <source>Label xAxis</source>
-                <target>Beschriftung x-Achse</target>
-            </trans-unit>
-            <trans-unit id="flexform.map.yaxis.label">
-                <source>Label yAxis</source>
-                <target>Beschriftung y-Achse</target>
-            </trans-unit>
-            <trans-unit id="flexform.map.bars.yaxis2.label">
-                <source>Label yAxis2</source>
-                <target>Beschriftung 2. y-Achse</target>
-            </trans-unit>
-            <trans-unit id="flexform.map.bars.stacked">
-                <source>Stacked presentation</source>
-                <target>Stapeldarstellung</target>
-            </trans-unit>
-            <trans-unit id="flexform.map.bars.horizontal">
-                <source>Horizontal presentation</source>
-                <target>Horizontale Darstellung</target>
-            </trans-unit>
-            <trans-unit id="flexform.map.bars.dataLabels.offsetX">
-                <source>Horizontal offset of data label</source>
-                <target>Horizontaler Versatz der Balkenbeschriftung</target>
-            </trans-unit>
-            <trans-unit id="flexform.map.bars.dataLabels.offsetY">
-                <source>Vertical offset of data label</source>
-                <target>Vertikaler Versatz der Balkenbeschriftung</target>
-            </trans-unit>
-            <trans-unit id="flexform.map.bars.dataLabels.style.colors">
-                <source>Colors of data label</source>
-                <target>Farbe der Balkenbeschriftung</target>
-            </trans-unit>
-            <trans-unit id="flexform.map.bars.yaxis2.show">
-                <source>Second yAxis</source>
-                <target>2. y-Achse einblenden</target>
-            </trans-unit>
-            <trans-unit id="flexform.map.colors">
-                <source>Colors</source>
-                <target>Farben</target>
-            </trans-unit>
-            <trans-unit id="flexform.map.labels">
-                <source>Labels</source>
-                <target>Beschriftungen</target>
-            </trans-unit>
-            <trans-unit id="flexform.map.series">
-                <source>Values</source>
-                <target>Werte</target>
-            </trans-unit>
-            <trans-unit id="flexform.map.unit">
-                <source>Unit</source>
-                <target>Einheit</target>
-            </trans-unit>
-            <trans-unit id="flexform.map.bars.offsetX">
-                <source>Series offsets x-axis</source>
-                <target>Werteversatz auf x-Achse</target>
-            </trans-unit>
-            <trans-unit id="flexform.map.caption">
-                <source>Caption</source>
-                <target>Bildunterschrift</target>
-            </trans-unit>
-            <trans-unit id="flexform.map.legend.show">
-                <source>Show legend</source>
-                <target>Legende anzeigen</target>
-            </trans-unit>
+            <trans-unit id="tx_rkwmaps_domain_model_map.name">
+				<source>Name</source>
+				<target>Bezeichnung</target>
+			</trans-unit>
+
+            <!-- tx_rkwmaps_domain_model_item -->
+            <trans-unit id="tx_rkwmaps_domain_model_item.items">
+				<source>Items</source>
+				<target>Elemente</target>
+			</trans-unit>
+
+            <trans-unit id="tx_rkwmaps_domain_model_item.item">
+				<source>Item</source>
+				<target>Element</target>
+			</trans-unit>
+
+			<trans-unit id="tx_rkwmaps_domain_model_item.district">
+				<source>District</source>
+				<target>Landkreis</target>
+			</trans-unit>
+
+			<trans-unit id="tx_rkwmaps_domain_model_item.content">
+				<source>Content</source>
+				<target>Inhalt</target>
+			</trans-unit>
+
 		</body>
 	</file>
 </xliff>

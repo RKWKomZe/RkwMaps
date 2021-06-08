@@ -10,7 +10,7 @@
                     <settings.map>
                         <TCEforms>
                             <label>
-                                LLL:EXT:rkw_maps/Resources/Private/Language/locallang_be.xlf:tx_rkwmaps_domain_model_map.name
+                                LLL:EXT:rkw_maps/Resources/Private/Language/locallang_db.xlf:tx_rkwmaps_domain_model_map.name
                             </label>
                             <config>
                                 <type>select</type>
