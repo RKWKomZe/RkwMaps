@@ -99,69 +99,51 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             let popperInstance_' . $this->contentUid . '
         
             const data_' . $this->contentUid . ' = ' . $map->getData() . '
-            
-            fetch(\'/typo3conf/ext/rkw_maps/Resources/Public/Svg/germany-district-map-creative-commons-wiki.svg\')
-                .then(response => response.text())
-                .then((image) => {
-                
-                    let startOfSvg_' . $this->contentUid . ' = image.indexOf(\'<svg\')
-                    startOfSvg_' . $this->contentUid . ' = startOfSvg_' . $this->contentUid . ' >= 0 ? startOfSvg_' . $this->contentUid . ' : 0
-        
-                    const draw_' . $this->contentUid . ' = SVG(image.slice(startOfSvg_' . $this->contentUid . '))
-                        .addTo(\'#map_' . $this->contentUid . '\')
-                        .size(\'100%\', 1000)
-                        .panZoom({
-                            zoomMin: 0.5,
-                            zoomMax: 10, 
-                            zoomFactor: 0.00000001
-                        })
-        
-                    for (const region of draw_' . $this->contentUid . '.find(\'#districts .district\')) {
-        
-                        const regionClass = region.classes()[1]
-                        const associatedRegions = draw_' . $this->contentUid . '.find(\'.\' + regionClass);
-                        const regionValue = data_' . $this->contentUid . '[regionClass]
+            const map_' . $this->contentUid . ' = SVG(\'#map_' . $this->contentUid . '\')
 
-                        for (const associatedRegion of associatedRegions) {
-                            if (typeof regionValue !== \'undefined\') {
-                                associatedRegion.addClass(\'primary\')
-                            }
-                        }
-                        
-                        region.on(\'mouseover\', () => {
-                        
-                            if (typeof regionValue !== \'undefined\') {
-                                popperEl_' . $this->contentUid . '.innerHTML = `<strong>${region.attr(\'name\')}</strong><br>` + regionValue.content
-                            } else {
-                                popperEl_' . $this->contentUid . '.innerHTML = `<strong>${region.attr(\'name\')}</strong>`
-                            }
-                            
-                            for (const associatedRegion of associatedRegions) {
-                                if (associatedRegion != region) {
-                                    associatedRegion.addClass(\'primary\')
-                                }
-                            }
-        
-                            popperEl_' . $this->contentUid . '.style.visibility = \'visible\'
-                            popperInstance_' . $this->contentUid . ' = Popper.createPopper(region.node, popperEl_' . $this->contentUid . ', { placement: \'bottom\' })
-                            
-                        })
-        
-                        region.on(\'mouseleave\', () => {
-        
-                            popperEl_' . $this->contentUid . '.style.visibility = \'hidden\'
-       
-                            for (const associatedRegion of associatedRegions) {
-                                if (associatedRegion != region) {
-                                    associatedRegion.removeClass(\'primary\')
-                                }
-                            }
-                     
-                        })
-                        
+            for (const region of map_' . $this->contentUid . '.find(\'#districts .district\')) {
+
+                const regionClass = region.classes()[1]
+                const associatedRegions = map_' . $this->contentUid . '.find(\'.\' + regionClass);
+                const regionValue = data_' . $this->contentUid . '[regionClass]
+
+                for (const associatedRegion of associatedRegions) {
+                    if (typeof regionValue !== \'undefined\') {
+                        associatedRegion.addClass(\'primary\')
+                        associatedRegion.addClass(\'is-marked\')
+                    }
+                }
+                
+                region.on(\'mouseover\', () => {
+                
+                    if (typeof regionValue !== \'undefined\') {
+                        popperEl_' . $this->contentUid . '.innerHTML = `<strong>${region.attr(\'name\')}</strong><br>` + regionValue.content
+                    } else {
+                        popperEl_' . $this->contentUid . '.innerHTML = `<strong>${region.attr(\'name\')}</strong>`
                     }
                     
+                    for (const associatedRegion of associatedRegions) {
+                        associatedRegion.addClass(\'primary\')
+                    }
+
+                    popperEl_' . $this->contentUid . '.style.visibility = \'visible\'
+                    popperInstance_' . $this->contentUid . ' = Popper.createPopper(region.node, popperEl_' . $this->contentUid . ', { placement: \'bottom\' })
+                    
                 })
+
+                region.on(\'mouseleave\', () => {
+
+                    popperEl_' . $this->contentUid . '.style.visibility = \'hidden\'
+
+                    for (const associatedRegion of associatedRegions) {
+                        if (! associatedRegion.hasClass(\'is-marked\')) {
+                            associatedRegion.removeClass(\'primary\')
+                        }
+                    }
+             
+                })
+                
+            }
                     
         ';
 
