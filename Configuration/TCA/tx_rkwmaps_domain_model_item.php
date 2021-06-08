@@ -113,7 +113,7 @@ return [
 		],
 		'district' => [
 			'exclude' => false,
-			'label' => 'LLL:EXT:rkw_maps/Resources/Private/Language/locallang_db.xlf:tx_rkwmaps_domain_model_item.type',
+			'label' => 'LLL:EXT:rkw_maps/Resources/Private/Language/locallang_db.xlf:tx_rkwmaps_domain_model_item.district',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',

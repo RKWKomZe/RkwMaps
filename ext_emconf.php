@@ -12,7 +12,7 @@
 
 $EM_CONF[$_EXTKEY] = [
     'title'            => 'RKW Maps',
-    'description'      => '',
+    'description'      => 'Adds interactive maps to show information based on german districts',
     'category'         => 'plugin',
     'author'           => 'Christian Dilger',
     'author_email'     => 'c.dilger@addorange.de',
@@ -21,7 +21,7 @@ $EM_CONF[$_EXTKEY] = [
     'uploadfolder'     => '0',
     'createDirs'       => '',
     'clearCacheOnLoad' => 0,
-    'version'          => '8.7.1',
+    'version'          => '8.7.2',
     'constraints'      => [
         'depends'   => [
             'typo3' => '7.6.0-8.7.99',
