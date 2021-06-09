@@ -6,7 +6,7 @@
 
             <!-- tx_rkwmaps_domain_model_map -->
             <trans-unit id="tx_rkwmaps_domain_model_map">
-				<source>RKW Map</source>
+				<source>RKW Maps: Map</source>
 			</trans-unit>
 
             <trans-unit id="tx_rkwmaps_domain_model_map.name">
@@ -14,6 +14,10 @@
 			</trans-unit>
 
             <!-- tx_rkwmaps_domain_model_item -->
+            <trans-unit id="tx_rkwmaps_domain_model_item">
+				<source>RKW Maps: Item</source>
+			</trans-unit>
+
             <trans-unit id="tx_rkwmaps_domain_model_item.items">
 				<source>Items</source>
 			</trans-unit>
