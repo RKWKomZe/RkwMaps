@@ -65,25 +65,6 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         $this->pageRenderer = GeneralUtility::makeInstance( PageRenderer::class );
 
-        // Inject necessary js libs
-        $this->pageRenderer->addJsFooterLibrary(
-            'svgJS', /* name */
-            'https://unpkg.com/@svgdotjs/svg.js@3.0.16/dist/svg.min.js',
-            'text/javascript', /* type */
-            false, /* compress*/
-            true, /* force on top */
-            '', /* allwrap */
-            true /* exlude from concatenation */
-        );
-        $this->pageRenderer->addJsFooterLibrary(
-            'svgPanzoomJS', /* name */
-            'https://unpkg.com/@svgdotjs/svg.panzoom.js@2.1.1/dist/svg.panzoom.min.js',
-            'text/javascript', /* type */
-            false, /* compress*/
-            false, /* force on top */
-            '', /* allwrap */
-            true /* exlude from concatenation */
-        );
         $this->pageRenderer->addJsFooterLibrary(
             'popperJS', /* name */
             'https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.4/umd/popper.min.js',
@@ -99,22 +80,29 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             let popperInstance_' . $this->contentUid . '
         
             const data_' . $this->contentUid . ' = ' . $map->getData() . '
-            const map_' . $this->contentUid . ' = SVG(\'#map_' . $this->contentUid . '\')
+            const map_' . $this->contentUid . ' = $(\'#map_' . $this->contentUid . '\')
+            
+            for (let region of map_' . $this->contentUid . '.find(\'#districts .district\')) {
+            
+                const regionClass = region.classList[1]
 
-            for (const region of map_' . $this->contentUid . '.find(\'#districts .district\')) {
+                region = $(region)
 
-                const regionClass = region.classes()[1]
                 const associatedRegions = map_' . $this->contentUid . '.find(\'.\' + regionClass);
                 const regionValue = data_' . $this->contentUid . '[regionClass]
 
                 for (const associatedRegion of associatedRegions) {
+                    
+                    let $associatedRegion = $(associatedRegion)
+                    
                     if (typeof regionValue !== \'undefined\') {
-                        associatedRegion.addClass(\'primary\')
-                        associatedRegion.addClass(\'is-marked\')
+                        $associatedRegion.addClass(\'primary\')
+                        $associatedRegion.addClass(\'is-marked\')
                     }
+                    
                 }
                 
-                region.on(\'mouseover\', () => {
+               region.on(\'mouseover\', () => {
                 
                     if (typeof regionValue !== \'undefined\') {
                         popperEl_' . $this->contentUid . '.innerHTML = `<strong>${region.attr(\'name\')}</strong><br>` + regionValue.content
@@ -123,11 +111,14 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                     }
                     
                     for (const associatedRegion of associatedRegions) {
-                        associatedRegion.addClass(\'primary\')
+                    
+                        let $associatedRegion = $(associatedRegion)
+                        $associatedRegion.addClass(\'primary\')
+                    
                     }
 
                     popperEl_' . $this->contentUid . '.style.visibility = \'visible\'
-                    popperInstance_' . $this->contentUid . ' = Popper.createPopper(region.node, popperEl_' . $this->contentUid . ', { placement: \'bottom\' })
+                    popperInstance_' . $this->contentUid . ' = Popper.createPopper(region[0], popperEl_' . $this->contentUid . ', { placement: \'bottom\' })
                     
                 })
 
@@ -136,9 +127,13 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                     popperEl_' . $this->contentUid . '.style.visibility = \'hidden\'
 
                     for (const associatedRegion of associatedRegions) {
-                        if (! associatedRegion.hasClass(\'is-marked\')) {
-                            associatedRegion.removeClass(\'primary\')
+                    
+                        let $associatedRegion = $(associatedRegion)
+                    
+                        if (! $associatedRegion.hasClass(\'is-marked\')) {
+                            $associatedRegion.removeClass(\'primary\')
                         }
+                    
                     }
              
                 })
