@@ -67,29 +67,34 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         $this->pageRenderer->addJsFooterLibrary(
             'popperJS', /* name */
-            'https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.4/umd/popper.min.js',
+            'https://unpkg.com/@popperjs/core@2',
             'text/javascript', /* type */
             false, /* compress*/
-            true, /* force on top */
+            false, /* force on top */
+            '', /* allwrap */
+            true /* exlude from concatenation */
+        );
+
+        $this->pageRenderer->addJsFooterLibrary(
+            'tippyJS', /* name */
+            'https://unpkg.com/tippy.js@6',
+            'text/javascript', /* type */
+            false, /* compress*/
+            false, /* force on top */
             '', /* allwrap */
             true /* exlude from concatenation */
         );
 
         $mapScript = '
-            const popperEl_' . $this->contentUid . ' = document.getElementById(\'popper\')
-            let popperInstance_' . $this->contentUid . '
-        
             const data_' . $this->contentUid . ' = ' . $map->getData() . '
             const map_' . $this->contentUid . ' = $(\'#map_' . $this->contentUid . '\')
-            
+                        
             for (let region of map_' . $this->contentUid . '.find(\'#districts .district\')) {
-            
+    
                 const regionClass = region.classList[1]
-
-                region = $(region)
-
-                const associatedRegions = map_' . $this->contentUid . '.find(\'.\' + regionClass);
                 const regionValue = data_' . $this->contentUid . '[regionClass]
+                const regionName = $(region).attr(\'name\')
+                const associatedRegions = map_' . $this->contentUid . '.find(\'.\' + regionClass);
 
                 for (const associatedRegion of associatedRegions) {
                     
@@ -101,15 +106,25 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                     }
                     
                 }
+
+                let innerHtml = `<strong>${regionName}</strong>`
                 
-               region.on(\'mouseover\', () => {
+                if (typeof regionValue !== \'undefined\') {
+                    innerHtml = `<strong>${regionName}</strong><br>` + regionValue.content
+                }
+
+                tippy(region, {
+                    trigger: \'mouseenter click\',
+                    theme: \'rkw\',
+                    content: innerHtml,
+                    allowHTML: true,
+                    interactive: true,
+                    appendTo: document.body,
+                    offset: [0, -1],
+                });
+            
+                $(region).on(\'mouseover\', () => {
                 
-                    if (typeof regionValue !== \'undefined\') {
-                        popperEl_' . $this->contentUid . '.innerHTML = `<strong>${region.attr(\'name\')}</strong><br>` + regionValue.content
-                    } else {
-                        popperEl_' . $this->contentUid . '.innerHTML = `<strong>${region.attr(\'name\')}</strong>`
-                    }
-                    
                     for (const associatedRegion of associatedRegions) {
                     
                         let $associatedRegion = $(associatedRegion)
@@ -117,14 +132,9 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                     
                     }
 
-                    popperEl_' . $this->contentUid . '.style.visibility = \'visible\'
-                    popperInstance_' . $this->contentUid . ' = Popper.createPopper(region[0], popperEl_' . $this->contentUid . ', { placement: \'bottom\' })
-                    
                 })
 
-                region.on(\'mouseleave\', () => {
-
-                    popperEl_' . $this->contentUid . '.style.visibility = \'hidden\'
+                $(region).on(\'mouseleave\', () => {
 
                     for (const associatedRegion of associatedRegions) {
                     
@@ -137,9 +147,9 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                     }
              
                 })
-                
+            
             }
-                    
+            
         ';
 
         $this->pageRenderer->addJsFooterInlineCode( 'mapScript' . $this->contentUid, $mapScript, true );
@@ -148,14 +158,6 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->pageRenderer->addFooterData(
             '<link rel="stylesheet" href="/typo3conf/ext/rkw_maps/Resources/Public/Css/Map.css" />'
         );
-
-        // Inject map css
-        $mapCss = '
-		        #map_' . $this->contentUid . ' {
-				}
-			';
-
-        $this->pageRenderer->addCssInlineBlock( 'mapCss_' . $this->contentUid, $mapCss, true );
 
         $this->view->assign( 'cUid', $this->contentUid );
 
