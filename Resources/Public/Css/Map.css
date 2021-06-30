@@ -1,17 +1,10 @@
+/* SVG Map */
 path {
     cursor: pointer;
 }
 
 path:hover {
     fill: #d63f11;
-}
-
-#popper {
-    visibility: hidden;
-    padding: 1em;
-    background: white;
-    border-radius: 2px;
-    box-shadow: 0 0 10px 3px rgba(0, 0, 0, .3);
 }
 
 #TT_Districts, #TT_States_1_, #TT_Gov_Districts {
@@ -24,4 +17,26 @@ path:hover {
 
 .district.primary {
     fill: #d63f11;
+}
+
+/* Popover */
+.tippy-box[data-theme~='rkw'] {
+    color: #505050;
+    padding: 1em;
+    background-color: white;
+    border-radius: 2px;
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, .3);
+}
+
+.tippy-box[data-theme~='rkw'][data-placement^='top'] > .tippy-arrow::before {
+    border-top-color: white;
+}
+.tippy-box[data-theme~='rkw'][data-placement^='bottom'] > .tippy-arrow::before {
+    border-bottom-color: white;
+}
+.tippy-box[data-theme~='rkw'][data-placement^='left'] > .tippy-arrow::before {
+    border-left-color: white;
+}
+.tippy-box[data-theme~='rkw'][data-placement^='right'] > .tippy-arrow::before {
+    border-right-color: white;
 }
