@@ -14,19 +14,11 @@
                             </label>
                             <config>
                                 <type>select</type>
-                                <items>
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">Bitte wählen</numIndex>
-                                        <numIndex index="1"></numIndex>
-                                    </numIndex>
-                                </items>
                                 <foreign_table>tx_rkwmaps_domain_model_map</foreign_table>
                                 <foreign_table_where>
                                     AND tx_rkwmaps_domain_model_map.deleted = 0 AND tx_rkwmaps_domain_model_map.hidden = 0
                                 </foreign_table_where>
                                 <size>1</size>
-                                <min>1</min>
-                                <max>1</max>
                             </config>
                         </TCEforms>
                     </settings.map>
