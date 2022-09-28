@@ -10,6 +10,12 @@ defined('TYPO3_MODE') || die('Access denied.');
     'RKW Maps'
 );
 
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+    'RKW.RkwMaps',
+    'GEMMaps',
+    'RKW Maps (GEM)'
+);
+
 //=================================================================
 // Add Flexform
 //=================================================================
