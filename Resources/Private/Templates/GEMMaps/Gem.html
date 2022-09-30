@@ -15,10 +15,18 @@ Show.html: keep
 
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
+<f:section name="HeaderAssets">
+    <link rel="stylesheet" href="{f:uri.resource(path: 'Styles/map.css', extensionName: 'RkwMaps')}"/>
+</f:section>
+
 <f:section name="main">
 
-    <div>Hier ist die GEM-Karte</div>
+    <div id="app" class="flex-basis-12"></div>
 
+</f:section>
+
+<f:section name="FooterAssets">
+    <script type="application/javascript" src="{f:uri.resource(path:'Scripts/map.js', extensionName: 'RkwMaps')}"></script>
 </f:section>
 
 </html>
