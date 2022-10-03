@@ -113,6 +113,139 @@ class GEMMapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     public function gemAction()
     {
         $this->initializeAction();
+
+        $content = [
+            'method' => [
+                'href' => 'https://example.org?methods',
+                'text' => 'Sie haben Fragen zur Methodik? Hier finden Sie alle Details.'
+            ],
+            'material' => [
+                'quota' => [
+                    'tabs' => [
+                        [
+                            'id' => 'gruendungsgeschehen',
+                            'title' => 'Gründungsgeschehen',
+                            'content' => [
+                                [
+                                    'href' => 'https://www.gemconsortium.org/reports/latest-global-report',
+                                    'text' => 'Global Entrepreneurship Monitor Global Report (2022)'
+                                ],
+                                [
+                                    'href' => 'http://rkw.link/gem2022',
+                                    'text' => 'Global Entrepreneurship Monitor Länderbericht Deutschland (2022)'
+                                ],
+                            ]
+                        ],
+                        [
+                            'id' => 'migrantisches-unternehmertum',
+                            'title' => 'Migrantisches Unternehmertum',
+                            'content' => [
+                                [
+                                    'href' => 'https://www.rkw-kompetenzzentrum.de/publikationen/faktenblatt/global-entrepreneurship-monitor-aktuell-gruendende-mit-einwanderungsgeschichte/',
+                                    'text' => 'Global Entrepreneurship Monitor aktuell: Gründende mit Einwanderungsgeschichte (2022)'
+                                ],
+                                [
+                                    'href' => 'https://www.rkw-kompetenzzentrum.de/das-rkw/presse/migrantinnen-und-migranten-treiben-die-deutsche-gruendungsszene-an/',
+                                    'text' => 'Migrantinnen und Migranten treiben die deutsche Gründungsszene an!(2022)'
+                                ],
+                            ]
+                        ]
+                    ]
+                ],
+                'attitudes' => [
+                    'tabs' => [
+                        [
+                            'id' => '',
+                            'title' => '',
+                            'content' => [
+                                [
+                                    'href' => 'http://rkw.link/gem2022',
+                                    'text' => 'Global Entrepreneurship Monitor Länderbericht Deutschland (2022)'
+                                ],
+                                [
+                                    'href' => 'https://www.gemconsortium.org/reports/latest-global-report',
+                                    'text' => 'Global Entrepreneurship Monitor Global Report (2022)'
+                                ],
+                            ]
+                        ],
+                    ]
+                ]
+            ],
+            'examples' => [
+                'DE-BW' => [
+                    'quota' => [
+                        'tea' => [
+                            [
+                                'href' => 'http://example.org?bwtea1',
+                                'text' => 'Link BW tea 1'
+                            ],
+                            [
+                                'href' => 'http://example.org?bwtea2',
+                                'text' => 'Link BW tea 2'
+                            ]
+                        ],
+                        'female' => [
+                            [
+                                'href' => 'http://example.org?bwfemale1',
+                                'text' => 'Link BW female 1'
+                            ],
+                            [
+                                'href' => 'http://example.org?bwfemale2',
+                                'text' => 'Link BW female 2'
+                            ]
+                        ],
+                        'male' => [
+                            [
+                                'href' => 'http://example.org?bwmale1',
+                                'text' => 'Link BW male 1'
+                            ],
+                            [
+                                'href' => 'http://example.org?bwmale2',
+                                'text' => 'Link BW male 2'
+                            ]
+                        ]
+                    ]
+                ],
+                'DE-BY' => [
+                    'quota' => [
+                        'tea' => [
+                            [
+                                'href' => 'http://example.org?bytea1',
+                                'text' => 'Link BY tea 1'
+                            ],
+                            [
+                                'href' => 'http://example.org?bytea2',
+                                'text' => 'Link BY tea 2'
+                            ]
+                        ],
+                        'female' => [
+                            [
+                                'href' => 'http://example.org?byfemale1',
+                                'text' => 'Link BY female 1'
+                            ],
+                            [
+                                'href' => 'http://example.org?byfemale2',
+                                'text' => 'Link BY female 2'
+                            ]
+                        ],
+                        'male' => [
+                            [
+                                'href' => 'http://example.org?bymale1',
+                                'text' => 'Link BY male 1'
+                            ],
+                            [
+                                'href' => 'http://example.org?bymale2',
+                                'text' => 'Link BY male 2'
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ];
+
+        $this->view->assignMultiple([
+            'content' => json_encode($content)
+        ]);
     }
 
 }
