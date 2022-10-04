@@ -21,6 +21,14 @@
                             </config>
                         </TCEforms>
                     </settings.methodId>
+                    <settings.googleApiKey>
+                        <TCEforms>
+                            <label>Google ApiKey</label>
+                            <config>
+                                <type>input</type>
+                            </config>
+                        </TCEforms>
+                    </settings.googleApiKey>
                 </el>
 			</ROOT>
 		</sDEF>

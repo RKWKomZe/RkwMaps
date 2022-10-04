@@ -755,7 +755,8 @@ class GEMMapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         ];
 
         $this->view->assignMultiple([
-            'content' => json_encode($content)
+            'content' => json_encode($content),
+            'googleApiKey' => $this->settings['googleApiKey']
         ]);
     }
 
