@@ -1,0 +1,38 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:rkw="http://typo3.org/ns/RKW/RkwMaps/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+<f:layout name="Default" />
+
+This Template is responsible for displaying a single view for a domain object
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+Resources:
+Private:
+Templates:
+Show.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="HeaderAssets">
+    <link rel="stylesheet" href="{f:uri.resource(path: 'Styles/map.css', extensionName: 'RkwMaps')}"/>
+</f:section>
+
+<f:section name="main">
+
+    <div
+        id="app"
+        class="flex-basis-12"
+        data-content="{content}"
+        data-json-path="/typo3conf/ext/rkw_maps/Resources/Public/Json/"
+        data-images-path="/typo3conf/ext/rkw_maps/Resources/Public/Images/"
+    ></div>
+
+</f:section>
+
+<f:section name="FooterAssets">
+    <script type="application/javascript" src="{f:uri.resource(path:'Scripts/map.js', extensionName: 'RkwMaps')}"></script>
+</f:section>
+
+</html>
