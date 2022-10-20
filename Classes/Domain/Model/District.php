@@ -30,7 +30,7 @@ class District extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * name
      *
      * @var string
-     * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $name = '';
 
@@ -38,7 +38,7 @@ class District extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * slug
      *
      * @var string
-     * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $slug = '';
 

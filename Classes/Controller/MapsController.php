@@ -40,7 +40,7 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      * mapRepository
      *
      * @var \RKW\RkwMaps\Domain\Repository\MapRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $mapRepository;
 
@@ -88,27 +88,27 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $mapScript = '
             const data_' . $this->contentUid . ' = ' . $map->getData() . '
             const map_' . $this->contentUid . ' = $(\'#map_' . $this->contentUid . '\')
-                        
+
             for (let region of map_' . $this->contentUid . '.find(\'#districts .district\')) {
-    
+
                 const regionClass = region.classList[1]
                 const regionValue = data_' . $this->contentUid . '[regionClass]
                 const regionName = $(region).attr(\'name\')
                 const associatedRegions = map_' . $this->contentUid . '.find(\'.\' + regionClass);
 
                 for (const associatedRegion of associatedRegions) {
-                    
+
                     let $associatedRegion = $(associatedRegion)
-                    
+
                     if (typeof regionValue !== \'undefined\') {
                         $associatedRegion.addClass(\'primary\')
                         $associatedRegion.addClass(\'is-marked\')
                     }
-                    
+
                 }
 
                 let innerHtml = `<strong>${regionName}</strong>`
-                
+
                 if (typeof regionValue !== \'undefined\') {
                     innerHtml = `<strong>${regionName}</strong><br>` + regionValue.content
                 }
@@ -122,14 +122,14 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                     appendTo: document.body,
                     offset: [0, -1],
                 });
-            
+
                 $(region).on(\'mouseover\', () => {
-                
+
                     for (const associatedRegion of associatedRegions) {
-                    
+
                         let $associatedRegion = $(associatedRegion)
                         $associatedRegion.addClass(\'primary\')
-                    
+
                     }
 
                 })
@@ -137,19 +137,19 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                 $(region).on(\'mouseleave\', () => {
 
                     for (const associatedRegion of associatedRegions) {
-                    
+
                         let $associatedRegion = $(associatedRegion)
-                    
+
                         if (! $associatedRegion.hasClass(\'is-marked\')) {
                             $associatedRegion.removeClass(\'primary\')
                         }
-                    
+
                     }
-             
+
                 })
-            
+
             }
-            
+
         ';
 
         $this->pageRenderer->addJsFooterInlineCode( 'mapScript' . $this->contentUid, $mapScript, true );
