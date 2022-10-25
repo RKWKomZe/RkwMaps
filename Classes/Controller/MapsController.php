@@ -79,7 +79,7 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $map = $this->mapRepository->findByUid($this->settings['map']);
         }
 
-        $this->pageRenderer = GeneralUtility::makeInstance( PageRenderer::class );
+        $this->pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
 
         $this->pageRenderer->addJsFooterLibrary(
             'popperJS', /* name */
@@ -168,29 +168,15 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         ';
 
-        $this->pageRenderer->addJsFooterInlineCode( 'mapScript' . $this->contentUid, $mapScript, true );
+        $this->pageRenderer->addJsFooterInlineCode('mapScript' . $this->contentUid, $mapScript, true);
 
         // Inject External Caption Menu CSS
         $this->pageRenderer->addFooterData(
             '<link rel="stylesheet" href="/typo3conf/ext/rkw_maps/Resources/Public/Css/Map.css" />'
         );
 
-        $this->view->assign( 'cUid', $this->contentUid );
+        $this->view->assign('cUid', $this->contentUid);
 
     }
 
-    /**
-     * action show
-     *
-     * @return void
-     */
-    public function gemAction()
-    {
-        $this->initializeAction();
-
-        if (!$map) {
-            $map = $this->mapRepository->findByUid($this->settings['map']);
-        }
-    }
-
-    }
+}
