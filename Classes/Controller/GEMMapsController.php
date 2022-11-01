@@ -141,7 +141,7 @@ class GEMMapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                                 ],
                                 [
                                     'href' => 'https://www.rkw-kompetenzzentrum.de/publikationen/studie/powerpoint-folien-global-entrepreneurship-monitor-20212022/',
-                                    'text' => 'Powerpoint-Folien zum GEM-Länderbericht',
+                                    'text' => 'Powerpoint-Folien zum GEM-Länderbericht (2022)',
                                 ],
                                 [
                                     'href' => 'https://www.rkw-kompetenzzentrum.de/publikationen/faktenblatt/global-entrepreneurship-monitor-aktuell-gruenden-als-familientradition-oder-als-notfallplan/',
@@ -207,7 +207,7 @@ class GEMMapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                             'content' => [
                                 [
                                     'href' => 'https://www.rkw-kompetenzzentrum.de/das-rkw/presse/trotz-oder-wegen-corona-wieder-bessere-gruendungschancen-in-deutschland/',
-                                    'text' => 'Trotz oder wegen Corona: Wieder bessere Gründungschancen in Deutschland!',
+                                    'text' => 'Trotz oder wegen Corona: Wieder bessere Gründungschancen in Deutschland! (2022)',
                                 ],
                                 [
                                     'href' => 'https://www.rkw-kompetenzzentrum.de/publikationen/faktenblatt/global-entrepreneurship-monitor-aktuell-resilienz-der-unternehmen-in-deutschland/',
