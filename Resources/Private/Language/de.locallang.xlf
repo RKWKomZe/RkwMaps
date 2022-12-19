@@ -21,6 +21,7 @@
 
 			<trans-unit id="flexform.map.methodPage">
 				<source>Method page</source>
+				<target>Seite mit Erläuterungen zur Methode</target>
 			</trans-unit>
 
 		</body>

@@ -9,7 +9,7 @@
 				<el>
                     <settings.methodId>
                         <TCEforms>
-                            <label>Methodenseite</label>
+                            <label>LLL:EXT:rkw_maps/Resources/Private/Language/locallang.xlf:flexform.map.methodPage</label>
                             <config>
                                 <type>group</type>
                                 <internal_type>db</internal_type>
