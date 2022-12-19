@@ -1,0 +1,27 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+<f:layout name="Default" />
+
+<f:section name="HeaderAssets">
+    <link rel="stylesheet" href="{f:uri.resource(path: 'Styles/map.css', extensionName: 'RkwMaps')}"/>
+</f:section>
+
+<f:section name="main">
+
+    <div
+        id="js-map"
+        class="flex-basis-12"
+        data-content="{content}"
+        data-json-path="/typo3conf/ext/rkw_maps/Resources/Public/Json/"
+        data-images-path="/typo3conf/ext/rkw_maps/Resources/Public/Images/"
+    ></div>
+
+</f:section>
+
+<f:section name="FooterAssets">
+    <script type="application/javascript" src="{f:uri.resource(path:'Scripts/map.vendor.js', extensionName: 'RkwMaps')}"></script>
+    <script type="application/javascript" src="{f:uri.resource(path:'Scripts/map.js', extensionName: 'RkwMaps')}"></script>
+</f:section>
+
+</html>

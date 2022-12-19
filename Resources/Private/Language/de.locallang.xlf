@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-02-08T15:53:32Z" product-name="rkw_maps">
+		<header/>
+		<body>
+
+		    <!-- tx_rkwmaps_domain_model_map -->
+			<trans-unit id="tx_rkwmaps_domain_model_map">
+				<source>Map</source>
+			</trans-unit>
+
+		    <!-- tx_rkwmaps_domain_model_item -->
+			<trans-unit id="tx_rkwmaps_domain_model_item">
+				<source>Item</source>
+			</trans-unit>
+
+		    <!-- tx_rkwmaps_domain_model_district -->
+			<trans-unit id="tx_rkwmaps_domain_model_district">
+				<source>District</source>
+			</trans-unit>
+
+			<trans-unit id="flexform.map.methodPage">
+				<source>Method page</source>
+				<target>Seite mit Erläuterungen zur Methode</target>
+			</trans-unit>
+
+		</body>
+	</file>
+</xliff>

@@ -19,6 +19,10 @@
 				<source>District</source>
 			</trans-unit>
 
+			<trans-unit id="flexform.map.methodPage">
+				<source>Method page</source>
+			</trans-unit>
+
 		</body>
 	</file>
 </xliff>
