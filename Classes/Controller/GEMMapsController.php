@@ -665,13 +665,6 @@ class GEMMapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                                 ->build(),
                             'text' => 'Der Abbau von Risikoaversion & dem Stigma des Scheiterns steigert die Gründungsrahmenbedingungen',
                         ],
-                        [
-                            'href' => $this->uriBuilder->reset()
-                                ->setTargetPageUid(9563)
-                                ->setCreateAbsoluteUri(true)
-                                ->build(),
-                            'text' => 'Unsere Gründungsförderung basiert auf einem ganzheitlichen Ansatz',
-                        ],
                     ],
                     'attitudes' => [
                         [
@@ -692,6 +685,13 @@ class GEMMapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                 ],
                 'DE-TH' => [
                     'quota' => [
+                        [
+                            'href' => $this->uriBuilder->reset()
+                                ->setTargetPageUid(9563)
+                                ->setCreateAbsoluteUri(true)
+                                ->build(),
+                            'text' => 'Unsere Gründungsförderung basiert auf einem ganzheitlichen Ansatz',
+                        ],
                         [
                             'href' => $this->uriBuilder->reset()
                                 ->setTargetPageUid(9646)
