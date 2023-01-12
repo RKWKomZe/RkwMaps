@@ -660,13 +660,6 @@ class GEMMapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                     'quota'     => [
                         [
                             'href' => $this->uriBuilder->reset()
-                                ->setTargetPageUid(9563)
-                                ->setCreateAbsoluteUri(true)
-                                ->build(),
-                            'text' => 'Unsere Gründungsförderung basiert auf einem ganzheitlichen Ansatz',
-                        ],
-                        [
-                            'href' => $this->uriBuilder->reset()
                                 ->setTargetPageUid(9595)
                                 ->setCreateAbsoluteUri(true)
                                 ->build(),
@@ -692,6 +685,13 @@ class GEMMapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                 ],
                 'DE-TH' => [
                     'quota' => [
+                        [
+                            'href' => $this->uriBuilder->reset()
+                                ->setTargetPageUid(9563)
+                                ->setCreateAbsoluteUri(true)
+                                ->build(),
+                            'text' => 'Unsere Gründungsförderung basiert auf einem ganzheitlichen Ansatz',
+                        ],
                         [
                             'href' => $this->uriBuilder->reset()
                                 ->setTargetPageUid(9646)
