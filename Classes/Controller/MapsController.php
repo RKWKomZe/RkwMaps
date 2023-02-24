@@ -52,7 +52,15 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     /**
      * @return void
      */
-    protected function initializeAction()
+    protected function initializeAction(): void
+    {
+        $this->getContentUid();
+    }
+
+    /**
+     * @return void
+     */
+    protected function getContentUid(): void
     {
         $this->contentUid = (int)$this->configurationManager->getContentObject()->data['uid'];
     }
@@ -74,7 +82,7 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         }
 
         /** @todo: loading external script which may cause issues with data privacy! */
-        $this->pageRenderer = GeneralUtility::makeInstance( PageRenderer::class );
+        $this->pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
         $this->pageRenderer->addJsFooterLibrary(
             'popperJS', /* name */
             'https://unpkg.com/@popperjs/core@2',
@@ -163,14 +171,14 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         ';
 
-        $this->pageRenderer->addJsFooterInlineCode( 'mapScript' . $this->contentUid, $mapScript, true );
+        $this->pageRenderer->addJsFooterInlineCode('mapScript' . $this->contentUid, $mapScript, true);
 
         // Inject External Caption Menu CSS
         $this->pageRenderer->addFooterData(
             '<link rel="stylesheet" href="/typo3conf/ext/rkw_maps/Resources/Public/Css/Map.css" />'
         );
 
-        $this->view->assign( 'cUid', $this->contentUid );
+        $this->view->assign('cUid', $this->contentUid);
 
     }
 }

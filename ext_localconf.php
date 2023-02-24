@@ -18,6 +18,18 @@ call_user_func(
                 'Maps' => ''
             ]
         );
+
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+            'RKW.RkwMaps',
+            'GEMMaps',
+            [
+                'GEMMaps' => 'gem'
+            ],
+            // non-cacheable actions
+            [
+                'GEMMaps' => ''
+            ]
+        );
     },
     $_EXTKEY
 );
