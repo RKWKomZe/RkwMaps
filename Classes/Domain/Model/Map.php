@@ -79,6 +79,7 @@ class Map extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->items = $items;
     }
 
+
     /**
      * @return string|null
      */
