@@ -2,10 +2,6 @@
 
 namespace RKW\RkwMaps\Controller;
 
-use TYPO3\CMS\Core\Page\PageRenderer;
-use TYPO3Fluid\Fluid\View\TemplateView;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-
 /*
  * This file is part of the TYPO3 CMS project.
  *
@@ -19,11 +15,13 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  * The TYPO3 project - inspiring people to share!
  */
 
+use RKW\RkwMaps\Domain\Repository\MapRepository;
+
 /**
  * GEMMapsController
  *
  * @author Christian Dilger <c.dilger@addorange.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwMaps
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -31,79 +29,35 @@ class GEMMapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 {
 
     /**
-     * Expose the pageRenderer
-     *
-     * @var $pageRenderer
+     * @var \RKW\RkwMaps\Domain\Repository\MapRepository|null
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected $pageRenderer;
+    protected ?MapRepository $mapRepository = null;
+
 
     /**
-     * mapRepository
-     *
-     * @var \RKW\RkwMaps\Domain\Repository\MapRepository
-     * @inject
+     * @var int
      */
-    protected $mapRepository;
+    protected int $contentUid = 0;
 
-    /**
-     * @var integer
-     */
-    protected $contentUid;
 
     /**
      * initializeAction
      *
-     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
-     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
-     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
+     * @return void
      */
     public function initializeAction(): void
     {
-        parent::initializeAction();
         $this->getContentUid();
     }
 
+
     /**
      * @return void
      */
-    protected function getContentUid()
+    protected function getContentUid(): void
     {
         $this->contentUid = (int)$this->configurationManager->getContentObject()->data['uid'];
-    }
-
-    /**
-     * Method overrides is base method as base method relies
-     * on objectManager to instantiate PageRenderer::class.
-     * But PageRenderer::class is initially instantiated by
-     * GeneralUtility::makeInstance, so the base method does not
-     * append the assets. This function may be removed, if the
-     * installation is upgraded to TYPO3 9.5.
-     *
-     * see https://forge.typo3.org/issues/89445
-     *
-     * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface $request
-     * @return void
-     * @deprecated
-     *
-     */
-    protected function renderAssetsForRequest($request)
-    {
-        if (!$this->view instanceof TemplateView) {
-            return;
-        }
-
-        $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
-        $variables = ['request' => $request, 'arguments' => $this->arguments];
-        $headerAssets = $this->view->renderSection('HeaderAssets', $variables, true);
-        $footerAssets = $this->view->renderSection('FooterAssets', $variables, true);
-
-        if (!empty(trim($headerAssets))) {
-            $pageRenderer->addHeaderData($headerAssets);
-        }
-
-        if (!empty(trim($footerAssets))) {
-            $pageRenderer->addFooterData($footerAssets);
-        }
     }
 
 
@@ -111,8 +65,10 @@ class GEMMapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      * action show
      *
      * @return void
+     * @todo plain texts in php-code without translation. preparation for visual representation should be done elsewhere
+     * @todo fixed pageUids in php-code. don't ever do this
      */
-    public function gemAction()
+    public function gemAction(): void
     {
         $this->initializeAction();
 
@@ -141,7 +97,7 @@ class GEMMapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                                 ],
                                 [
                                     'href' => 'https://www.rkw-kompetenzzentrum.de/publikationen/studie/powerpoint-folien-global-entrepreneurship-monitor-20212022/',
-                                    'text' => 'Powerpoint-Folien zum GEM-Länderbericht',
+                                    'text' => 'Powerpoint-Folien zum GEM-Länderbericht (2022)',
                                 ],
                                 [
                                     'href' => 'https://www.rkw-kompetenzzentrum.de/publikationen/faktenblatt/global-entrepreneurship-monitor-aktuell-gruenden-als-familientradition-oder-als-notfallplan/',
@@ -207,7 +163,7 @@ class GEMMapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                             'content' => [
                                 [
                                     'href' => 'https://www.rkw-kompetenzzentrum.de/das-rkw/presse/trotz-oder-wegen-corona-wieder-bessere-gruendungschancen-in-deutschland/',
-                                    'text' => 'Trotz oder wegen Corona: Wieder bessere Gründungschancen in Deutschland!',
+                                    'text' => 'Trotz oder wegen Corona: Wieder bessere Gründungschancen in Deutschland! (2022)',
                                 ],
                                 [
                                     'href' => 'https://www.rkw-kompetenzzentrum.de/publikationen/faktenblatt/global-entrepreneurship-monitor-aktuell-resilienz-der-unternehmen-in-deutschland/',
@@ -706,13 +662,6 @@ class GEMMapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                     'quota'     => [
                         [
                             'href' => $this->uriBuilder->reset()
-                                ->setTargetPageUid(9563)
-                                ->setCreateAbsoluteUri(true)
-                                ->build(),
-                            'text' => 'Unsere Gründungsförderung basiert auf einem ganzheitlichen Ansatz',
-                        ],
-                        [
-                            'href' => $this->uriBuilder->reset()
                                 ->setTargetPageUid(9595)
                                 ->setCreateAbsoluteUri(true)
                                 ->build(),
@@ -740,6 +689,13 @@ class GEMMapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                     'quota' => [
                         [
                             'href' => $this->uriBuilder->reset()
+                                ->setTargetPageUid(9563)
+                                ->setCreateAbsoluteUri(true)
+                                ->build(),
+                            'text' => 'Unsere Gründungsförderung basiert auf einem ganzheitlichen Ansatz',
+                        ],
+                        [
+                            'href' => $this->uriBuilder->reset()
                                 ->setTargetPageUid(9646)
                                 ->setCreateAbsoluteUri(true)
                                 ->build(),
@@ -757,9 +713,7 @@ class GEMMapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             ],
         ];
 
-        $this->view->assignMultiple([
-            'content' => json_encode($content),
-        ]);
+        $this->view->assign('content', json_encode($content));
     }
 
 }

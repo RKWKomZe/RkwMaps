@@ -1,5 +1,4 @@
 <?php
-
 namespace RKW\RkwMaps\Domain\Model;
 
 /*
@@ -15,22 +14,24 @@ namespace RKW\RkwMaps\Domain\Model;
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+
 /**
  * Map
  *
  * @author Christian Dilger <c.dilger@addorange.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwMaps
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class Map extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
+
     /**
-     * items
-     *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwMaps\Domain\Model\Item>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwMaps\Domain\Model\Item>|null
      */
-    protected $items;
+    protected ?ObjectStorage $items = null;
+
 
     /**
      * __construct
@@ -40,6 +41,7 @@ class Map extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         //Do not remove the next line: It would break the functionality
         $this->initStorageObjects();
     }
+
 
     /**
      * Initializes all ObjectStorage properties
@@ -54,15 +56,17 @@ class Map extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->items = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
+
     /**
      * Returns the items
      *
      * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwMaps\Domain\Model\Item> $items
      */
-    public function getItems()
+    public function getItems(): ObjectStorage
     {
         return $this->items;
     }
+
 
     /**
      * Sets the items
@@ -70,12 +74,16 @@ class Map extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwMaps\Domain\Model\Item> $items
      * @return void
      */
-    public function setItems(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $items)
+    public function setItems(ObjectStorage $items)
     {
         $this->items = $items;
     }
 
-    public function getData()
+
+    /**
+     * @return string|null
+     */
+    public function getData():? string
     {
         $items = [];
 
@@ -87,10 +95,9 @@ class Map extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
                 'name' => $district->getName(),
                 'content' => $item->getContent()
             ];
-
         }
 
-        return json_encode($items);
+        return json_encode($items) ?: null;
     }
 
 }

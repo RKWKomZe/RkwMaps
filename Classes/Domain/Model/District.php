@@ -19,7 +19,7 @@ namespace RKW\RkwMaps\Domain\Model;
  * District
  *
  * @author Christian Dilger <c.dilger@addorange.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwMaps
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -27,30 +27,27 @@ class District extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
 
     /**
-     * name
-     *
      * @var string
-     * @validate NotEmpty
      */
-    protected $name = '';
+    protected string $name = '';
+
 
     /**
-     * slug
-     *
      * @var string
-     * @validate NotEmpty
      */
-    protected $slug = '';
+    protected string $slug = '';
+
 
     /**
      * Returns the name
      *
      * @return string $name
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
+
 
     /**
      * Sets the name
@@ -58,20 +55,22 @@ class District extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $name
      * @return void
      */
-    public function setName($name)
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
+
 
     /**
      * Returns the slug
      *
      * @return string $slug
      */
-    public function getSlug()
+    public function getSlug(): string
     {
         return $this->slug;
     }
+
 
     /**
      * Sets the slug
@@ -79,7 +78,7 @@ class District extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $slug
      * @return void
      */
-    public function setSlug($slug)
+    public function setSlug(string $slug): void
     {
         $this->slug = $slug;
     }

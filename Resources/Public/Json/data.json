@@ -1,7 +1,7 @@
 {
 	"config": {
 		"quantiles": [0, 0.25, 0.5, 0.75, 1],
-		"colorRange": ["#f1bfb0", "#d63f11"]
+		"colorRange": ["#E74011", "#501700"]
 	},
 	"filterset": {
 		"filters": {
