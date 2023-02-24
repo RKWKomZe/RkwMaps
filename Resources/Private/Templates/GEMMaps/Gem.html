@@ -4,7 +4,8 @@
 <f:layout name="Default" />
 
 <f:section name="HeaderAssets">
-    <link rel="stylesheet" href="{f:uri.resource(path: 'Styles/map.css', extensionName: 'RkwMaps')}"/>
+    <f:variable name="now" value="{f:format.date(date: 'now', format: 'YmdHis')}" />
+    <link rel="stylesheet" href="{f:uri.resource(path: 'Styles/map.css?v={now}', extensionName: 'RkwMaps')}"/>
 </f:section>
 
 <f:section name="main">
@@ -20,8 +21,9 @@
 </f:section>
 
 <f:section name="FooterAssets">
-    <script type="application/javascript" src="{f:uri.resource(path:'Scripts/map.vendor.js', extensionName: 'RkwMaps')}"></script>
-    <script type="application/javascript" src="{f:uri.resource(path:'Scripts/map.js', extensionName: 'RkwMaps')}"></script>
+    <f:variable name="now" value="{f:format.date(date: 'now', format: 'YmdHis')}" />
+    <script type="application/javascript" src="{f:uri.resource(path:'Scripts/map.vendor.js?v={now}', extensionName: 'RkwMaps')}"></script>
+    <script type="application/javascript" src="{f:uri.resource(path:'Scripts/map.js?v={now}', extensionName: 'RkwMaps')}"></script>
 </f:section>
 
 </html>

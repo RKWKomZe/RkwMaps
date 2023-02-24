@@ -2,9 +2,6 @@
 
 namespace RKW\RkwMaps\Controller;
 
-use TYPO3\CMS\Core\Page\PageRenderer;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-
 /*
  * This file is part of the TYPO3 CMS project.
  *
@@ -18,11 +15,15 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  * The TYPO3 project - inspiring people to share!
  */
 
+use RKW\RkwMaps\Domain\Repository\MapRepository;
+use TYPO3\CMS\Core\Page\PageRenderer;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
  * MapsController
  *
  * @author Christian Dilger <c.dilger@addorange.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwMaps
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -30,29 +31,28 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
 
     /**
-     * Expose the pageRenderer
-     *
-     * @var $pageRenderer
+     * @var \TYPO3\CMS\Core\Page\PageRenderer|null
      */
-    protected $pageRenderer;
+    protected ?PageRenderer $pageRenderer = null;
+
 
     /**
-     * mapRepository
-     *
-     * @var \RKW\RkwMaps\Domain\Repository\MapRepository
-     * @inject
+     * @var \RKW\RkwMaps\Domain\Repository\MapRepository|null
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected $mapRepository;
+    protected ?MapRepository $mapRepository = null;
+
 
     /**
-     * @var integer
+     * @var int
      */
-    protected $contentUid;
+    protected int $contentUid;
+
 
     /**
      * @return void
      */
-    protected function initializeAction()
+    protected function initializeAction(): void
     {
         $this->getContentUid();
     }
@@ -60,27 +60,29 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     /**
      * @return void
      */
-    protected function getContentUid()
+    protected function getContentUid(): void
     {
         $this->contentUid = (int)$this->configurationManager->getContentObject()->data['uid'];
     }
 
+
     /**
      * action show
      *
-     * @param \RKW\RkwMaps\Domain\Model\Map $map
+     * @param \RKW\RkwMaps\Domain\Model\Map|null $map
      * @return void
      */
     public function showAction(\RKW\RkwMaps\Domain\Model\Map $map = null)
     {
+        /** @todo should not be necessary */
         $this->initializeAction();
 
         if (!$map) {
             $map = $this->mapRepository->findByUid($this->settings['map']);
         }
 
+        /** @todo: loading external script which may cause issues with data privacy! */
         $this->pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
-
         $this->pageRenderer->addJsFooterLibrary(
             'popperJS', /* name */
             'https://unpkg.com/@popperjs/core@2',
@@ -101,6 +103,7 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             true /* exlude from concatenation */
         );
 
+        /** @todo Mixture of frontend-code with backend-code. Bad habits */
         $mapScript = '
             const data_' . $this->contentUid . ' = ' . $map->getData() . '
             const map_' . $this->contentUid . ' = $(\'#map_' . $this->contentUid . '\')
@@ -178,5 +181,4 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('cUid', $this->contentUid);
 
     }
-
 }
