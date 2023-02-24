@@ -24,6 +24,7 @@
     ],
     "require": {
         "php": ">=7.4",
+		"ext-json": "*",
         "typo3/cms-core": "~9.5.0"
     },
     "autoload": {

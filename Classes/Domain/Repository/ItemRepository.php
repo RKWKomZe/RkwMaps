@@ -1,5 +1,4 @@
 <?php
-
 namespace RKW\RkwMaps\Domain\Repository;
 
 /*

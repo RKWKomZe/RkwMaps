@@ -1,5 +1,4 @@
 <?php
-
 namespace RKW\RkwMaps\Domain\Model;
 
 /*
@@ -15,6 +14,8 @@ namespace RKW\RkwMaps\Domain\Model;
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+
 /**
  * Item
  *
@@ -27,29 +28,50 @@ class Item extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
 
     /**
-     * district
-     *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwMaps\Domain\Model\District>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwMaps\Domain\Model\District>|null
      */
-    protected $district;
+    protected ?ObjectStorage $district = null;
+
 
     /**
-     * content
-     *
      * @var string
-     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
-    protected $content = '';
+    protected string $content = '';
+
+
+    /**
+     * __construct
+     */
+    public function __construct()
+    {
+        //Do not remove the next line: It would break the functionality
+        $this->initStorageObjects();
+    }
+
+    /**
+     * Initializes all ObjectStorage properties
+     * Do not modify this method!
+     * It will be rewritten on each save in the extension builder
+     * You may modify the constructor of this class instead
+     *
+     * @return void
+     */
+    protected function initStorageObjects()
+    {
+        $this->district = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    }
+
 
     /**
      * Returns the content
      *
      * @return string $content
      */
-    public function getContent()
+    public function getContent(): string
     {
         return $this->content;
     }
+
 
     /**
      * Sets the content
@@ -57,28 +79,30 @@ class Item extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $content
      * @return void
      */
-    public function setContent($content)
+    public function setContent(string $content): void
     {
         $this->content = $content;
     }
 
+
     /**
      * Returns the district
      *
-     * @return string $district
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwMaps\Domain\Model\District> $district
      */
-    public function getDistrict()
+    public function getDistrict(): ObjectStorage
     {
         return $this->district;
     }
 
+
     /**
      * Sets the district
      *
-     * @param string $district
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwMaps\Domain\Model\District> $district $district
      * @return void
      */
-    public function setDistrict($district)
+    public function setDistrict(ObjectStorage $district): void
     {
         $this->district = $district;
     }

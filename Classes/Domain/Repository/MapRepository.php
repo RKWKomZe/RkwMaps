@@ -1,9 +1,5 @@
 <?php
-
 namespace RKW\RkwMaps\Domain\Repository;
-
-use TYPO3\CMS\Extbase\Persistence\QueryInterface;
-use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -18,6 +14,9 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Persistence\Repository;
+
 /**
  * MapRepository
  *
@@ -28,6 +27,7 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  */
 class MapRepository extends Repository
 {
+
     /**
      * @var array
      */
