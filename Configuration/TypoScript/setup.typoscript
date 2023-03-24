@@ -1,26 +1,33 @@
 
 plugin.tx_rkwmaps {
-  view {
-    templateRootPaths.0 = EXT:rkw_maps/Resources/Private/Templates/
-    templateRootPaths.1 = {$plugin.tx_rkwmaps.view.templateRootPath}
-    partialRootPaths.0 = EXT:rkw_maps/Resources/Private/Partials/
-    partialRootPaths.1 = {$plugin.tx_rkwmaps.view.partialRootPath}
-    layoutRootPaths.0 = EXT:rkw_maps/Resources/Private/Layouts/
-    layoutRootPaths.1 = {$plugin.tx_rkwmaps.view.layoutRootPath}
-  }
-  persistence {
-    storagePid = {$plugin.tx_rkwmaps.persistence.storagePid}
-    #recursive = 1
-  }
-  features {
-    #skipDefaultArguments = 1
-  }
-  mvc {
-    #callDefaultActionIfActionCantBeResolved = 1
-  }
-  settings {
-    map = {$plugin.tx_rkwmaps.settings.map}
-  }
+    view {
+        layoutRootPaths {
+            0 = EXT:rkw_maps/Resources/Private/Layouts/
+            1 = {$plugin.tx_rkwmaps.view.layoutRootPath}
+        }
+        templateRootPaths {
+            0 = EXT:rkw_maps/Resources/Private/Templates/
+            1 = {$plugin.tx_rkwmaps.view.templateRootPath}
+        }
+        partialRootPaths {
+            0 = EXT:rkw_maps/Resources/Private/Partials/
+            1 = {$plugin.tx_rkwmaps.view.partialRootPath}
+            2 = {$plugin.tx_coreextended.view.partialRootPath}
+        }
+    }
+    persistence {
+        storagePid = {$plugin.tx_rkwmaps.persistence.storagePid}
+        #recursive = 1
+    }
+    features {
+        #skipDefaultArguments = 1
+    }
+    mvc {
+        #callDefaultActionIfActionCantBeResolved = 1
+    }
+    settings {
+        map = {$plugin.tx_rkwmaps.settings.map}
+    }
 }
 
 
