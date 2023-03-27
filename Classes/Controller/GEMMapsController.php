@@ -29,10 +29,10 @@ class GEMMapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 {
 
     /**
-     * @var \RKW\RkwMaps\Domain\Repository\MapRepository|null
+     * @var \RKW\RkwMaps\Domain\Repository\MapRepository
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected ?MapRepository $mapRepository = null;
+    protected MapRepository $mapRepository;
 
 
     /**
