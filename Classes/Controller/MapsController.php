@@ -1,5 +1,4 @@
 <?php
-
 namespace RKW\RkwMaps\Controller;
 
 /*
@@ -37,10 +36,10 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
 
     /**
-     * @var \RKW\RkwMaps\Domain\Repository\MapRepository|null
+     * @var \RKW\RkwMaps\Domain\Repository\MapRepository
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected ?MapRepository $mapRepository = null;
+    protected MapRepository $mapRepository;
 
 
     /**
