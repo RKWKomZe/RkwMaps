@@ -17,19 +17,19 @@
 								"value": "general.quota.tea",
 								"label": "TEA-Gründungsquote",
 								"text": "In den westdeutschen Bundesländern gründen mehr Personen ein Unternehmen oder sind gerade dabei, zu gründen, als im Osten Deutschlands. Besonders hoch sind die Gründungsquoten zum Beispiel in Berlin, Bayern und in Hamburg. In Hamburg gründeten 2017-2021 im Schnitt zum Beispiel knapp 10% der Bevölkerung ein Unternehmen oder waren gerade dabei, zu gründen.  Niedriger sind die Gründungsquoten zum Beispiel in Thüringen und in Mecklenburg-Vorpommern. In den letzten 5 Jahren sind die Gründungsquoten in vielen Bundesländern im Vergleich zum Zeitabschnitt 2012-2016 gestiegen, zum Beispiel in Sachsen-Anhalt.",
-								"description": "Total early-stage Entrepreneurial Activity (TEA): Prozentanteil derjenigen 18–64-Jährigen, die während der letzten 3,5 Jahre ein Unternehmen gegründet haben und/oder gerade dabei sind ein Unternehmen zu gründen, an allen 18–64-Jährigen."
+								"definition": "Total early-stage Entrepreneurial Activity (TEA): Prozentanteil derjenigen 18–64-Jährigen, die während der letzten 3,5 Jahre ein Unternehmen gegründet haben und/oder gerade dabei sind ein Unternehmen zu gründen, an allen 18–64-Jährigen."
 							},
 							{
 								"value": "general.quota.female",
 								"label": "TEA-Gründungsquote (weiblich)",
 								"text": "Frauen gründen seltener ein Unternehmen als Männer. Dennoch ist die Gründungsquote der Frauen insgesamt im Zeitverlauf etwas gestiegen. Am häufigsten gründen oder planen Männer in den westdeutschen Bundesländern ein Unternehmen, am seltesten Frauen in Ostdeutschland.",
-								"description": "Total early-stage Entrepreneurial Activity (TEA): Prozentanteil derjenigen 18–64-Jährigen, die während der letzten 3,5 Jahre ein Unternehmen gegründet haben und/oder gerade dabei sind ein Unternehmen zu gründen, an allen 18–64-Jährigen."
+								"definition": "Total early-stage Entrepreneurial Activity (TEA): Prozentanteil derjenigen 18–64-Jährigen, die während der letzten 3,5 Jahre ein Unternehmen gegründet haben und/oder gerade dabei sind ein Unternehmen zu gründen, an allen 18–64-Jährigen."
 							},
 							{
 								"value": "general.quota.male",
 								"label": "TEA-Gründungsquote (männlich)",
 								"text": "Frauen gründen seltener ein Unternehmen als Männer. Dennoch ist die Gründungsquote der Frauen insgesamt im Zeitverlauf etwas gestiegen. Am häufigsten gründen oder planen Männer in den westdeutschen Bundesländern ein Unternehmen, am seltesten Frauen in Ostdeutschland.",
-								"description": "Total early-stage Entrepreneurial Activity (TEA): Prozentanteil derjenigen 18–64-Jährigen, die während der letzten 3,5 Jahre ein Unternehmen gegründet haben und/oder gerade dabei sind ein Unternehmen zu gründen, an allen 18–64-Jährigen."
+								"definition": "Total early-stage Entrepreneurial Activity (TEA): Prozentanteil derjenigen 18–64-Jährigen, die während der letzten 3,5 Jahre ein Unternehmen gegründet haben und/oder gerade dabei sind ein Unternehmen zu gründen, an allen 18–64-Jährigen."
 							}
 						]
 					},
@@ -42,19 +42,19 @@
 								"value": "general.attitudes.fear",
 								"label": "Angst vor dem Scheitern",
 								"text": "In Berlin denkt 2016-2018 ca. ein Drittel der Bevölkerung, dass sie die Angst vor dem Scheitern vor einer Unternehmensgründung abhalten würde. In Sachsen-Anhalt oder Brandenburg stimmen sogar mehr als die Hälfte der befragten Bevölkerung dieser Aussage zu. Auch bezüglich der Angst vor dem Scheitern sind Unterschiede zwischen den neuen und den alten Bundesländern sichtbar. In vielen Bundesländern hat die Angst vor dem Scheitern im Zeitverlauf aber deutlich abgenommen - zum Beispiel in Rheinland-Pfalz oder in Thüringen.",
-								"description": "Prozentanteil der 18–64-Jährigen, die folgender Aussage zustimmen: \"Sie würden aufgrund der Angst zu scheitern kein Unternehmen gründen\", an der Gesamtbevölkerung."
+								"definition": "Prozentanteil der 18–64-Jährigen, die folgender Aussage zustimmen: \"Sie würden aufgrund der Angst zu scheitern kein Unternehmen gründen\", an der Gesamtbevölkerung."
 							},
 							{
 								"value": "general.attitudes.chances",
 								"label": "Gründungschancen",
 								"text": "Im Westen Deutschlands sehen Menschen öfter gute Gründungschancen als im Osten Deutschlands. In Hamburg denken 2016-2018 zum Beispiel knapp 60% der Befragten, dass sich in den nächsten sechs Montaten in der Region, in der sie leben, gute Möglichkeiten für eine Unternehmensgründung ergeben, in Sachsen-Anhalt hingegen nur 17%. Diese West-Ost-Unterschiede haben sich aber im Laufe der Zeit aber etwas verringert. Außerdem ist die deutsche Bevölkerung etwas optimistischer geworden: Im Zeitraum 2016-2018 werden im Schnitt häufiger gute Gründungschancen beobachtet als im vorherigen Zeitabschnitt 2013-2015.",
-								"description": "Prozentanteil der 18–64-Jährigen, die folgender Aussage zustimmen: \"In den nächsten sechs Monaten ergeben sich in der Region, in der Sie leben, gute Möglichkeiten für eine Unternehmensgründung\", an der Gesamtbevölkerung."
+								"definition": "Prozentanteil der 18–64-Jährigen, die folgender Aussage zustimmen: \"In den nächsten sechs Monaten ergeben sich in der Region, in der Sie leben, gute Möglichkeiten für eine Unternehmensgründung\", an der Gesamtbevölkerung."
 							},
 							{
 								"value": "general.attitudes.abilities",
 								"label": "Gründungsfähigkeiten",
 								"text": "In den Jahren 2016-2018 denken im Schnitt 37,5% der Bevölkerung, dass sie die Fähigkeiten, das Wissen und die Erfahrung für eine Unternehmensgründung haben. Die West-Ost-Unterschiede sind hier nicht so deutlich wie bei den Gründungsquoten. Vor allem im Osten Deutschlands halten sich im Jahresabschnitt 2016-2018 mehr Personen für gründungsgeeignet als noch im Jahresabschnitt 2013-2015 - Thüringen sticht hier besonders heraus (28% 2013-2015; 39% in 2016-2018). In den westdeutschen Bundesländern hat sich die Einschätzung der Gründungsfähigkeiten im Zeitverlauf etwas weniger verändert.",
-								"description": "Prozentanteil der 18–64-Jährigen, die folgender Aussage zustimmen: \"Sie haben das Wissen, die Fähigkeit und die Erfahrung, die notwendig sind, um ein Unternehmen zu gründen\", an der Gesamtbevölkerung."
+								"definition": "Prozentanteil der 18–64-Jährigen, die folgender Aussage zustimmen: \"Sie haben das Wissen, die Fähigkeit und die Erfahrung, die notwendig sind, um ein Unternehmen zu gründen\", an der Gesamtbevölkerung."
 							}
 						]
 					},
@@ -67,13 +67,13 @@
 								"value": "general.images.attraction",
 								"label": "Gründen als attraktive Berufsoption",
 								"text": "Im Schnitt stimmt in Deutschland (in beiden Zeitabschnitten) etwa die Hälfte der Bevölkerung der Aussage zu, dass die Gründung eines neuen Unternehmens in Deutschland von den meisten Menschen als attraktive berufliche Perspektive angesehen wird. In einigen ostdeutschen Bundesländern, zum Beispiel Thüringen oder Brandenburg denken 2016-2018 etwas weniger Menschen, dass Gründen von den meisten Menschen als attraktive Berufsoption wahrgenommen wird, als noch 2013-2015. In Bremen oder Niedersachen hingegen halten 2016-2018 wieder mehr Menschen Gründen für attraktiv.",
-								"description": "Prozentanteil der 18–64-Jährigen, die folgender Aussage zustimmen: \"In Deutschland wird die Gründung eines neuen Unternehmens von den meisten Menschen als attraktive berufliche Perspektive angesehen\", an der Gesamtbevölkerung."
+								"definition": "Prozentanteil der 18–64-Jährigen, die folgender Aussage zustimmen: \"In Deutschland wird die Gründung eines neuen Unternehmens von den meisten Menschen als attraktive berufliche Perspektive angesehen\", an der Gesamtbevölkerung."
 							},
 							{
 								"value": "general.images.reputation",
 								"label": "Anerkennung von erfolgreich Gründenden",
 								"text": "In Deutschland stimmt die Mehrheit der Bevölkerung der Aussage zu, dass erfolgreiche Gründende Respekt und hohes Ansehen genießen - sowohl 2013-2015, als auch 2016-2018. Am optimistischsten ist hier die Bremer Bevölkerung mit 86,4% in den Jahren 2016-2018. Unterschiede zwischen den neuen und den alten Bundesländern bestehen bezüglich dieser Einschätzung kaum.",
-								"description": "Prozentanteil der 18–64-Jährigen, die folgender Aussage zustimmen: \"In Deutschland genießen erfolgreiche Gründer Respekt und hohes Ansehen\", an der Gesamtbevölkerung."
+								"definition": "Prozentanteil der 18–64-Jährigen, die folgender Aussage zustimmen: \"In Deutschland genießen erfolgreiche Gründer Respekt und hohes Ansehen\", an der Gesamtbevölkerung."
 							}
 						]
 					}
