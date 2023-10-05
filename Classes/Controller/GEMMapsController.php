@@ -57,6 +57,7 @@ class GEMMapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     protected function getContentUid(): void
     {
+        // @extensionScannerIgnoreLine
         $this->contentUid = (int)$this->configurationManager->getContentObject()->data['uid'];
     }
 

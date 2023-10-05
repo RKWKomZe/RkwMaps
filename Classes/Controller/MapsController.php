@@ -61,6 +61,7 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     protected function getContentUid(): void
     {
+        // @extensionScannerIgnoreLine
         $this->contentUid = (int)$this->configurationManager->getContentObject()->data['uid'];
     }
 
