@@ -69,6 +69,7 @@ class Item extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getContent(): string
     {
+        // @extensionScannerIgnoreLine
         return $this->content;
     }
 
@@ -81,6 +82,7 @@ class Item extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function setContent(string $content): void
     {
+        // @extensionScannerIgnoreLine
         $this->content = $content;
     }
 
