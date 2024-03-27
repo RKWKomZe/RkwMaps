@@ -32,7 +32,16 @@ class GEMMapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      * @var \RKW\RkwMaps\Domain\Repository\MapRepository
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected MapRepository $mapRepository;
+    protected ?MapRepository $mapRepository;
+
+
+    /**
+     * @param \RKW\RkwMaps\Domain\Repository\MapRepository $mapRepository
+     */
+    public function injectMailRepository(MapRepository $mapRepository)
+    {
+        $this->mapRepository = $mapRepository;
+    }
 
 
     /**
