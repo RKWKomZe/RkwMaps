@@ -43,6 +43,15 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
 
     /**
+     * @param \RKW\RkwMaps\Domain\Repository\MapRepository $mapRepository
+     */
+    public function injectMailRepository(MapRepository $mapRepository)
+    {
+        $this->mapRepository = $mapRepository;
+    }
+
+
+    /**
      * @var int
      */
     protected int $contentUid;
