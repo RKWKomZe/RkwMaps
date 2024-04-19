@@ -14,9 +14,6 @@ return [
 		'searchFields' => 'name',
 		'iconfile' => 'EXT:rkw_maps/Resources/Public/Icons/tx_rkwmaps_domain_model_district.gif'
 	],
-	'interface' => [
-		'showRecordFieldList' => 'name, slug',
-	],
 	'columns' => [
         'deleted' => [
             'readonly' => 1,
