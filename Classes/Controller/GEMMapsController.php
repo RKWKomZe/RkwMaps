@@ -15,8 +15,6 @@ namespace RKW\RkwMaps\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
-use RKW\RkwMaps\Domain\Repository\MapRepository;
-
 /**
  * GEMMapsController
  *
@@ -25,51 +23,8 @@ use RKW\RkwMaps\Domain\Repository\MapRepository;
  * @package RKW_RkwMaps
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class GEMMapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class GEMMapsController extends \RKW\RkwMaps\Controller\AbstractMapsController
 {
-
-    /**
-     * @var \RKW\RkwMaps\Domain\Repository\MapRepository
-     * @TYPO3\CMS\Extbase\Annotation\Inject
-     */
-    protected ?MapRepository $mapRepository;
-
-
-    /**
-     * @param \RKW\RkwMaps\Domain\Repository\MapRepository $mapRepository
-     */
-    public function injectMailRepository(MapRepository $mapRepository)
-    {
-        $this->mapRepository = $mapRepository;
-    }
-
-
-    /**
-     * @var int
-     */
-    protected int $contentUid = 0;
-
-
-    /**
-     * initializeAction
-     *
-     * @return void
-     */
-    public function initializeAction(): void
-    {
-        $this->getContentUid();
-    }
-
-
-    /**
-     * @return void
-     */
-    protected function getContentUid(): void
-    {
-        // @extensionScannerIgnoreLine
-        $this->contentUid = (int)$this->configurationManager->getContentObject()->data['uid'];
-    }
-
 
     /**
      * action show
@@ -80,7 +35,7 @@ class GEMMapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     public function gemAction(): void
     {
-        $this->initializeAction();
+        $this->getContentUid();
 
         $content = [
             'method'   => [

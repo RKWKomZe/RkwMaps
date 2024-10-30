@@ -14,6 +14,7 @@
                             </label>
                             <config>
                                 <type>select</type>
+                                <renderType>selectMultipleSideBySide</renderType>
                                 <foreign_table>tx_rkwmaps_domain_model_map</foreign_table>
                                 <foreign_table_where>
                                     AND tx_rkwmaps_domain_model_map.deleted = 0 AND tx_rkwmaps_domain_model_map.hidden = 0

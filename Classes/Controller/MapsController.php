@@ -14,7 +14,6 @@ namespace RKW\RkwMaps\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
-use RKW\RkwMaps\Domain\Repository\MapRepository;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -26,53 +25,13 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  * @package RKW_RkwMaps
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class MapsController extends \RKW\RkwMaps\Controller\AbstractMapsController
 {
 
     /**
      * @var \TYPO3\CMS\Core\Page\PageRenderer|null
      */
     protected ?PageRenderer $pageRenderer = null;
-
-
-    /**
-     * @var \RKW\RkwMaps\Domain\Repository\MapRepository
-     * @TYPO3\CMS\Extbase\Annotation\Inject
-     */
-    protected MapRepository $mapRepository;
-
-
-    /**
-     * @param \RKW\RkwMaps\Domain\Repository\MapRepository $mapRepository
-     */
-    public function injectMailRepository(MapRepository $mapRepository)
-    {
-        $this->mapRepository = $mapRepository;
-    }
-
-
-    /**
-     * @var int
-     */
-    protected int $contentUid;
-
-
-    /**
-     * @return void
-     */
-    protected function initializeAction(): void
-    {
-        $this->getContentUid();
-    }
-
-    /**
-     * @return void
-     */
-    protected function getContentUid(): void
-    {
-        // @extensionScannerIgnoreLine
-        $this->contentUid = (int)$this->configurationManager->getContentObject()->data['uid'];
-    }
 
 
     /**
@@ -83,8 +42,7 @@ class MapsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function showAction(\RKW\RkwMaps\Domain\Model\Map $map = null)
     {
-        /** @todo should not be necessary */
-        $this->initializeAction();
+        $this->getContentUid();
 
         if (!$map) {
             $map = $this->mapRepository->findByUid($this->settings['map']);
